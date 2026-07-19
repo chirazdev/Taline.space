@@ -1,1129 +1,1162 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Taline Space — منصة تعليمية إلكترونية</title>
-<meta name="description" content="Taline Space منصة تعليمية إلكترونية فاخرة: دورات، أساتذة، مستويات، اختبارات إلكترونية، ولوحة تحكم متكاملة بتصميم زجاجي أنيق." />
-<meta name="theme-color" content="#6D28D9" />
-<meta property="og:title" content="Taline Space — منصة تعليمية إلكترونية" />
-<meta property="og:description" content="تجربة تعلم عصرية بمستوى عالمي." />
-<meta property="og:type" content="website" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تالين سبيس | أكاديمية اللغات الفاخرة</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-/* ============ TOKENS ============ */
 :root{
-  --royal:#6D28D9;
-  --royal-deep:#4C1D95;
-  --royal-light:#8B5CF6;
-  --glow:#A78BFA;
-  --gold:#E6B450;
-  --pink:#F0A6CA;
-  --bg:#F4F1FB;
-  --bg2:#EDE7F9;
-  --ink:#1B1235;
-  --muted:#6E668A;
-  --line:rgba(109,40,217,.14);
-  --white:#ffffff;
-  --glass:rgba(255,255,255,.62);
-  --glass-strong:rgba(255,255,255,.8);
-  --glass-border:rgba(255,255,255,.75);
-  --shadow:0 18px 50px -18px rgba(76,29,149,.35);
-  --shadow-sm:0 8px 24px -12px rgba(76,29,149,.3);
+  --black:#060607;
+  --coal:#0d0d10;
+  --panel:#121216;
+  --glass:rgba(255,255,255,.045);
+  --glass-strong:rgba(255,255,255,.08);
+  --stroke:rgba(212,175,55,.18);
+  --stroke-soft:rgba(255,255,255,.08);
+  --gold:#d4af37;
+  --gold-light:#f0d98c;
+  --gold-deep:#8f7118;
+  --text:#efede6;
+  --muted:#9c9a90;
+  --danger:#e0705f;
+  --ok:#8fc98f;
   --radius:22px;
-  --radius-sm:14px;
-  --nav-h:70px;
-  --grad:linear-gradient(135deg,#7C3AED 0%,#6D28D9 45%,#4C1D95 100%);
-  --grad-soft:linear-gradient(135deg,rgba(167,139,250,.25),rgba(240,166,202,.18));
+  --shadow:0 24px 60px -24px rgba(0,0,0,.75);
+  --tr:.45s cubic-bezier(.22,.8,.28,1);
 }
-html[data-theme="dark"]{
-  --bg:#0F0B20;
-  --bg2:#161029;
-  --ink:#F2EEFB;
-  --muted:#A79FC4;
-  --line:rgba(167,139,250,.18);
-  --glass:rgba(31,24,54,.55);
-  --glass-strong:rgba(37,29,64,.72);
-  --glass-border:rgba(167,139,250,.16);
-  --shadow:0 18px 50px -18px rgba(0,0,0,.6);
-  --shadow-sm:0 8px 24px -12px rgba(0,0,0,.55);
-}
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Tajawal',system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-  line-height:1.6;
-  overflow-x:hidden;
+  background:var(--black);
+  color:var(--text);
+  font-family:'Tajawal',sans-serif;
+  font-size:16px;
+  line-height:1.7;
   min-height:100vh;
-  transition:background .4s ease,color .3s ease;
+  overflow-x:hidden;
 }
-h1,h2,h3,h4,.display{font-family:'Cairo','Tajawal',sans-serif;font-weight:800;line-height:1.25}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-img{max-width:100%;display:block}
-::selection{background:var(--royal);color:#fff}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 85% -5%, rgba(212,175,55,.10), transparent 60%),
+    radial-gradient(700px 480px at 8% 30%, rgba(212,175,55,.05), transparent 60%),
+    var(--black);
+}
+h1,h2,h3,h4{font-family:'Noto Kufi Arabic',sans-serif;line-height:1.5}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit}
+::selection{background:rgba(212,175,55,.35)}
 
-/* ambient background blobs */
-.aura{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
-.aura span{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;animation:float 18s ease-in-out infinite}
-.aura .a{width:460px;height:460px;background:var(--royal-light);top:-120px;inset-inline-start:-80px}
-.aura .b{width:420px;height:420px;background:var(--pink);top:30%;inset-inline-end:-120px;animation-delay:-6s}
-.aura .c{width:380px;height:380px;background:var(--glow);bottom:-140px;inset-inline-start:25%;animation-delay:-11s}
-html[data-theme="dark"] .aura span{opacity:.28}
-@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.08)}66%{transform:translate(-20px,25px) scale(.95)}}
-
-/* ============ GLASS PRIMITIVES ============ */
+/* ---------- Shared ---------- */
+.wrap{width:min(1180px,92%);margin-inline:auto}
+.gold-text{
+  background:linear-gradient(120deg,var(--gold-light),var(--gold) 45%,#b58f24 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.78rem;letter-spacing:.14em;color:var(--gold);
+  font-weight:700;margin-bottom:.7rem;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.section{padding:5.2rem 0 1rem}
+.section-head{margin-bottom:2.4rem}
+.section-head h2{font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:800}
+.section-head p{color:var(--muted);max-width:560px;margin-top:.4rem}
+.divider{
+  width:min(1180px,92%);margin:4.5rem auto 0;height:1px;position:relative;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.35),transparent);
+}
+.divider::after{
+  content:"";position:absolute;top:50%;right:50%;transform:translate(50%,-50%) rotate(45deg);
+  width:9px;height:9px;background:var(--black);border:1px solid var(--gold);
+}
 .glass{
   background:var(--glass);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border:1px solid var(--glass-border);
+  border:1px solid var(--stroke-soft);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border-radius:var(--radius);
-  box-shadow:var(--shadow-sm);
 }
-.container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:20px}
-
-/* ============ NAVBAR ============ */
-.nav{position:fixed;top:0;inset-inline:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;
-  background:var(--glass);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);
-  border-bottom:1px solid var(--glass-border);transition:background .3s}
-.nav .container{display:flex;align-items:center;gap:18px}
-.brand{display:flex;align-items:center;gap:10px;font-family:'Cairo';font-weight:900;font-size:1.35rem}
-.brand .mark{width:38px;height:38px;border-radius:12px;background:var(--grad);display:grid;place-items:center;color:#fff;box-shadow:0 6px 18px -4px var(--royal);position:relative;flex:none}
-.brand .mark::after{content:"";position:absolute;inset:5px;border:2px solid rgba(255,255,255,.55);border-bottom:none;border-radius:14px 14px 0 0}
-.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.nav-links{display:flex;gap:6px;margin-inline-start:14px}
-.nav-links a{padding:8px 14px;border-radius:12px;font-weight:700;color:var(--muted);font-size:.95rem;transition:.2s;position:relative}
-.nav-links a:hover{color:var(--royal);background:rgba(139,92,246,.1)}
-.nav-links a.active{color:var(--royal);background:rgba(139,92,246,.14)}
-.nav-actions{margin-inline-start:auto;display:flex;align-items:center;gap:8px}
-.icon-btn{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:var(--muted);
-  border:1px solid var(--line);background:var(--glass-strong);transition:.2s;position:relative}
-.icon-btn:hover{color:var(--royal);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
-.icon-btn .dot{position:absolute;top:8px;inset-inline-end:8px;width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 3px var(--glass-strong)}
-.btn{padding:10px 20px;border-radius:12px;font-weight:800;transition:.22s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
-.btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 24px -8px var(--royal)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px -8px var(--royal)}
-.btn-ghost{background:var(--glass-strong);border:1px solid var(--line);color:var(--ink)}
-.btn-ghost:hover{border-color:var(--royal-light);color:var(--royal)}
-.btn-gold{background:linear-gradient(135deg,#F2CC7B,#E6B450);color:#5a3d00;box-shadow:0 10px 24px -10px var(--gold)}
-.btn-sm{padding:7px 14px;font-size:.85rem;border-radius:10px}
-.burger{display:none}
-
-/* mobile nav */
-@media(max-width:920px){
-  .nav-links{position:fixed;top:var(--nav-h);inset-inline:0;flex-direction:column;gap:2px;padding:16px 20px;
-    background:var(--glass);backdrop-filter:blur(24px);border-bottom:1px solid var(--glass-border);
-    transform:translateY(-140%);transition:transform .35s cubic-bezier(.4,1.3,.5,1);margin:0}
-  .nav-links.open{transform:translateY(0)}
-  .nav-links a{padding:12px 14px}
-  .burger{display:grid}
-  .nav-actions .label{display:none}
-  .nav-actions .btn{padding:9px 14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  border:none;border-radius:14px;padding:.8rem 1.6rem;
+  font-weight:700;font-size:.95rem;transition:var(--tr);
 }
-
-/* ============ LAYOUT ============ */
-main{padding-top:var(--nav-h);min-height:100vh}
-.view{animation:fade .5s ease}
-@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.section{padding:64px 0}
-.section-head{text-align:center;max-width:640px;margin:0 auto 42px}
-.eyebrow{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:.8rem;letter-spacing:.5px;
-  color:var(--royal);background:rgba(139,92,246,.12);padding:6px 14px;border-radius:100px;margin-bottom:14px}
-.section-head h2{font-size:clamp(1.7rem,4vw,2.5rem);margin-bottom:10px}
-.section-head p{color:var(--muted);font-size:1.05rem}
-
-/* ============ HERO (Removed styles kept for potential reuse, but hero section itself is removed) ============ */
-
-/* ============ COURSE CARDS ============ */
-.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
-.chip{padding:8px 18px;border-radius:100px;font-weight:700;font-size:.9rem;color:var(--muted);
-  background:var(--glass-strong);border:1px solid var(--line);transition:.2s}
-.chip:hover{color:var(--royal);border-color:var(--royal-light)}
-.chip.active{background:var(--grad);color:#fff;border-color:transparent;box-shadow:var(--shadow-sm)}
-.card{overflow:hidden;transition:.28s;display:flex;flex-direction:column;cursor:pointer}
-.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.card-media{height:150px;position:relative;overflow:hidden;background:var(--grad)}
-.card-media .pat{position:absolute;inset:0;opacity:.9;background:
-  radial-gradient(circle at 20% 30%,rgba(255,255,255,.25),transparent 45%),
-  radial-gradient(circle at 80% 70%,rgba(240,166,202,.4),transparent 50%)}
-.card-media .emoji{position:absolute;inset:0;display:grid;place-items:center;font-size:3.4rem;filter:drop-shadow(0 6px 12px rgba(0,0,0,.25))}
-.card-media .lvl{position:absolute;top:12px;inset-inline-start:12px;padding:5px 12px;border-radius:100px;font-size:.72rem;font-weight:800;
-  background:rgba(255,255,255,.9);color:var(--royal-deep);backdrop-filter:blur(6px)}
-.card-body{padding:16px 17px;display:flex;flex-direction:column;gap:10px;flex:1}
-.card-subject{font-size:.78rem;font-weight:800;color:var(--pink);letter-spacing:.3px}
-html[data-theme="dark"] .card-subject{color:var(--glow)}
-.card h3{font-size:1.12rem}
-.card .teacher{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.85rem;font-weight:600}
-.card .teacher .av{width:24px;height:24px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:.7rem;font-weight:800}
-.card-meta{display:flex;gap:14px;color:var(--muted);font-size:.82rem;font-weight:600;margin-top:auto;flex-wrap:wrap}
-.card-meta span{display:flex;align-items:center;gap:5px}
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;border-top:1px solid var(--line)}
-.rating{display:flex;align-items:center;gap:4px;font-weight:800;font-size:.9rem;color:var(--gold)}
-@media(max-width:960px){.courses-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){
-  .courses-grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .card-media{height:110px}.card-media .emoji{font-size:2.6rem}
-  .card-body{padding:12px}.card h3{font-size:.98rem}.card-meta{font-size:.74rem;gap:8px}
-  .card .teacher{font-size:.78rem}
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold-light),var(--gold) 55%,#a88621);
+  color:#181203;box-shadow:0 12px 30px -12px rgba(212,175,55,.55);
 }
-
-/* ============ LEVELS / TEACHERS ============ */
-.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.tile{padding:26px 20px;text-align:center;transition:.25s;cursor:pointer}
-.tile:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.tile .ic{width:60px;height:60px;border-radius:18px;background:var(--grad-soft);display:grid;place-items:center;
-  font-size:1.8rem;margin:0 auto 14px;border:1px solid var(--line)}
-.tile h4{font-size:1.1rem;margin-bottom:4px}
-.tile p{color:var(--muted);font-size:.85rem}
-@media(max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
-
-.teachers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.tcard{padding:24px 18px;text-align:center;transition:.25s}
-.tcard:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.tcard .av{width:82px;height:82px;border-radius:50%;margin:0 auto 14px;background:var(--grad);display:grid;place-items:center;
-  color:#fff;font-family:'Cairo';font-size:1.7rem;font-weight:900;box-shadow:var(--shadow-sm);border:3px solid var(--glass-strong)}
-.tcard h4{font-size:1.08rem}
-.tcard .subj{color:var(--royal);font-weight:700;font-size:.85rem;margin:3px 0 8px}
-.tcard .cnt{color:var(--muted);font-size:.8rem}
-@media(max-width:900px){.teachers-grid{grid-template-columns:repeat(2,1fr)}}
-
-/* ============ SUBSCRIPTIONS ============ */
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
-.plan{padding:30px 26px;display:flex;flex-direction:column;gap:8px;position:relative;transition:.25s}
-.plan:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.plan.pop{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 22px 50px -18px var(--royal)}
-.plan.pop .muted,.plan.pop .price small{color:rgba(255,255,255,.85)}
-.plan .tag{position:absolute;top:-13px;inset-inline-start:50%;transform:translateX(50%);background:var(--gold);color:#5a3d00;
-  padding:5px 16px;border-radius:100px;font-weight:800;font-size:.78rem}
-.plan h3{font-size:1.3rem}
-.price{font-family:'Cairo';font-size:2.4rem;font-weight:900;margin:6px 0}
-.price small{font-size:.9rem;font-weight:600;color:var(--muted)}
-.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin:16px 0 22px;font-size:.94rem;font-weight:600}
-.plan li{display:flex;align-items:center;gap:9px}
-.plan li svg{flex:none;color:var(--royal-light)}
-.plan.pop li svg{color:#fff}
-.plan .btn{margin-top:auto;justify-content:center}
-@media(max-width:900px){.plans{grid-template-columns:1fr;max-width:420px;margin-inline:auto}}
-
-/* ============ COURSE DETAIL ============ */
-.detail-hero{padding:34px 0}
-.detail-top{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:center}
-.player{aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;position:relative;background:var(--grad);
-  display:grid;place-items:center;box-shadow:var(--shadow)}
-.player .play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;
-  color:var(--royal);cursor:pointer;transition:.2s;box-shadow:0 12px 30px -8px rgba(0,0,0,.4)}
-.player .play:hover{transform:scale(1.08)}
-.player .now{position:absolute;bottom:14px;inset-inline-start:16px;color:#fff;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.5)}
-.detail-info h1{font-size:clamp(1.5rem,4vw,2.1rem);margin-bottom:10px}
-.detail-info .row{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-weight:600;margin-bottom:16px}
-.detail-info .row span{display:flex;align-items:center;gap:6px}
-.progress-wrap{margin:16px 0}
-.progress-wrap .lbl{display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:7px}
-.bar{height:10px;border-radius:100px;background:var(--bg2);overflow:hidden}
-.bar i{display:block;height:100%;border-radius:100px;background:var(--grad);transition:width .6s ease}
-.tabs{display:flex;gap:6px;margin:26px 0 20px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:0}
-.tab{padding:11px 20px;font-weight:800;color:var(--muted);border-bottom:3px solid transparent;transition:.2s}
-.tab:hover{color:var(--royal)}
-.tab.active{color:var(--royal);border-color:var(--royal)}
-.lesson,.file-row{display:flex;align-items:center;gap:14px;padding:15px 18px;margin-bottom:10px;transition:.2s;cursor:pointer}
-.lesson:hover,.file-row:hover{transform:translateX(-4px);box-shadow:var(--shadow-sm)}
-.lesson .num{width:34px;height:34px;border-radius:10px;background:var(--grad-soft);display:grid;place-items:center;
-  font-weight:800;color:var(--royal);flex:none;border:1px solid var(--line)}
-.lesson.done .num{background:var(--grad);color:#fff}
-.lesson .txt{flex:1}
-.lesson .txt b{display:block;font-family:'Cairo';font-size:1rem}
-.lesson .txt span{font-size:.82rem;color:var(--muted)}
-.lesson .dur{color:var(--muted);font-size:.85rem;font-weight:700}
-.file-row .fic{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:var(--grad-soft);color:var(--royal);flex:none}
-@media(max-width:820px){.detail-top{grid-template-columns:1fr}}
-
-/* ============ QUIZ / TESTS ============ */
-.quiz-card{padding:30px;max-width:720px;margin-inline:auto}
-.q-count{color:var(--muted);font-weight:700;font-size:.9rem;margin-bottom:8px}
-.q-text{font-family:'Cairo';font-size:1.3rem;font-weight:800;margin-bottom:22px}
-.opt{display:flex;align-items:center;gap:12px;padding:15px 18px;border-radius:14px;border:1.5px solid var(--line);
-  margin-bottom:12px;transition:.18s;cursor:pointer;font-weight:600}
-.opt:hover{border-color:var(--royal-light);background:rgba(139,92,246,.06)}
-.opt.sel{border-color:var(--royal);background:rgba(139,92,246,.12)}
-.opt.correct{border-color:#22c55e;background:rgba(34,197,94,.12)}
-.opt.wrong{border-color:#ef4444;background:rgba(239,68,68,.1)}
-.opt .mk{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);flex:none;display:grid;place-items:center;font-size:.8rem}
-.opt.sel .mk{border-color:var(--royal);background:var(--royal);color:#fff}
-.opt.correct .mk{border-color:#22c55e;background:#22c55e;color:#fff}
-.opt.wrong .mk{border-color:#ef4444;background:#ef4444;color:#fff}
-.quiz-foot{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:12px}
-.score-ring{width:150px;height:150px;margin:0 auto 20px}
-.tests-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.test-item{padding:22px;transition:.25s;cursor:pointer}
-.test-item:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.test-item .ic{width:52px;height:52px;border-radius:14px;background:var(--grad-soft);display:grid;place-items:center;font-size:1.5rem;margin-bottom:14px;border:1px solid var(--line)}
-@media(max-width:860px){.tests-grid{grid-template-columns:1fr}}
-
-/* ============ DASHBOARD (student) ============ */
-.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:30px}
-.kpi{padding:22px}
-.kpi .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;color:#fff;margin-bottom:12px}
-.kpi b{font-family:'Cairo';font-size:1.8rem;font-weight:900;display:block}
-.kpi span{color:var(--muted);font-weight:600;font-size:.88rem}
-.dash-cols{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
-.panel{padding:24px}
-.panel h3{font-size:1.15rem;margin-bottom:16px;display:flex;align-items:center;gap:9px}
-.cert{display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;background:var(--grad-soft);margin-bottom:12px;border:1px solid var(--line)}
-.cert .medal{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#F2CC7B,#E6B450);display:grid;place-items:center;color:#5a3d00;flex:none}
-.noti{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
-.noti:last-child{border:none}
-.noti .d{width:9px;height:9px;border-radius:50%;background:var(--pink);margin-top:7px;flex:none}
-.noti b{font-size:.94rem}
-.noti span{font-size:.8rem;color:var(--muted)}
-@media(max-width:900px){.dash-grid{grid-template-columns:repeat(2,1fr)}.dash-cols{grid-template-columns:1fr}}
-
-/* mini bar chart */
-.chart{display:flex;align-items:flex-end;gap:12px;height:180px;padding-top:10px}
-.chart .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
-.chart .col i{width:100%;max-width:42px;border-radius:10px 10px 4px 4px;background:var(--grad);transition:height .8s ease;box-shadow:var(--shadow-sm)}
-.chart .col span{font-size:.78rem;color:var(--muted);font-weight:700}
-
-/* ============ CONTACT ============ */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.field{margin-bottom:16px}
-.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
-.field input,.field textarea,.field select{width:100%;padding:13px 15px;border-radius:12px;border:1.5px solid var(--line);
-  background:var(--glass-strong);color:var(--ink);font-family:inherit;font-size:.95rem;transition:.2s;font-weight:600}
-.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--royal);box-shadow:0 0 0 4px rgba(109,40,217,.12)}
-.field textarea{min-height:120px;resize:vertical}
-.info-item{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
-.info-item .ic{width:46px;height:46px;border-radius:13px;background:var(--grad-soft);display:grid;place-items:center;color:var(--royal);flex:none}
-@media(max-width:820px){.contact-grid{grid-template-columns:1fr}}
-
-/* ============ ADMIN ============ */
-.admin{display:grid;grid-template-columns:250px 1fr;min-height:calc(100vh - var(--nav-h))}
-.admin-side{padding:24px 16px;border-inline-end:1px solid var(--line);background:var(--glass);backdrop-filter:blur(18px)}
-.admin-side .logo{font-family:'Cairo';font-weight:900;font-size:1.2rem;padding:0 10px 20px;display:flex;align-items:center;gap:9px}
-.admin-nav a{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;font-weight:700;color:var(--muted);transition:.2s;margin-bottom:3px;cursor:pointer}
-.admin-nav a:hover{background:rgba(139,92,246,.1);color:var(--royal)}
-.admin-nav a.active{background:var(--grad);color:#fff;box-shadow:var(--shadow-sm)}
-.admin-main{padding:28px}
-.admin-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
-.admin-head h2{font-size:1.5rem}
-.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line)}
-table{width:100%;border-collapse:collapse;background:var(--glass);min-width:560px}
-th,td{padding:14px 16px;text-align:start;font-size:.9rem}
-th{font-family:'Cairo';font-weight:800;color:var(--muted);border-bottom:2px solid var(--line);font-size:.82rem;white-space:nowrap}
-td{border-bottom:1px solid var(--line);font-weight:600}
-tr:last-child td{border:none}
-tr:hover td{background:rgba(139,92,246,.05)}
-.badge{padding:4px 11px;border-radius:100px;font-size:.75rem;font-weight:800}
-.badge.ok{background:rgba(34,197,94,.15);color:#15803d}
-.badge.wait{background:rgba(230,180,80,.2);color:#a16207}
-.badge.no{background:rgba(239,68,68,.14);color:#b91c1c}
-html[data-theme="dark"] .badge.ok{color:#4ade80}
-html[data-theme="dark"] .badge.wait{color:#fbbf24}
-html[data-theme="dark"] .badge.no{color:#f87171}
-.row-act{display:flex;gap:6px}
-.row-act button{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;border:1px solid var(--line);color:var(--muted);transition:.2s}
-.row-act button:hover{color:var(--royal);border-color:var(--royal-light)}
-.row-act .del:hover{color:#ef4444;border-color:#ef4444}
-@media(max-width:820px){
-  .admin{grid-template-columns:1fr}
-  .admin-side{position:fixed;z-index:60;inset-block:var(--nav-h) 0;inset-inline-start:0;width:250px;transform:translateX(-105%);transition:.3s}
-  html[dir="rtl"] .admin-side{inset-inline-start:auto;inset-inline-end:0;transform:translateX(105%)}
-  .admin-side.open{transform:translateX(0)}
-  .stat-row{grid-template-columns:repeat(2,1fr)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(212,175,55,.7)}
+.btn-ghost{
+  background:transparent;color:var(--gold);
+  border:1px solid var(--stroke);
 }
+.btn-ghost:hover{background:rgba(212,175,55,.08)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
 
-/* ============ MODAL ============ */
-.overlay{position:fixed;inset:0;z-index:200;background:rgba(27,18,53,.45);backdrop-filter:blur(6px);
-  display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:.25s}
-.overlay.show{opacity:1;pointer-events:auto}
-.modal{width:100%;max-width:440px;padding:30px;background:var(--glass-strong);backdrop-filter:blur(30px);
-  border:1px solid var(--glass-border);border-radius:24px;box-shadow:var(--shadow);transform:scale(.94);transition:.25s}
-.overlay.show .modal{transform:scale(1)}
-.modal h3{font-size:1.4rem;margin-bottom:6px}
-.modal .sub{color:var(--muted);margin-bottom:20px;font-size:.92rem}
-.modal .close{position:absolute;top:16px;inset-inline-end:16px}
+/* ---------- Nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(6,6,7,.72);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--stroke-soft);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.logo-mark{
+  width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(212,175,55,.25),rgba(212,175,55,.05));
+  border:1px solid var(--stroke);
+  font-family:'Noto Kufi Arabic';font-weight:800;color:var(--gold);font-size:1.05rem;
+}
+.logo-name{font-family:'Noto Kufi Arabic';font-weight:800;font-size:1.05rem}
+.logo-name small{display:block;font-family:'Tajawal';font-weight:400;font-size:.62rem;color:var(--muted);letter-spacing:.28em}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--gold-light)}
+.nav-cta{display:flex;gap:.6rem;align-items:center}
+.admin-link{font-size:.8rem;padding:.55rem 1rem;border-radius:11px}
+.burger{display:none;background:none;border:1px solid var(--stroke-soft);border-radius:10px;width:42px;height:42px;color:var(--gold);font-size:1.2rem}
+.mobile-menu{display:none;flex-direction:column;gap:.2rem;padding:.6rem 4%;border-bottom:1px solid var(--stroke-soft);background:rgba(6,6,7,.95)}
+.mobile-menu a{color:var(--text);text-decoration:none;padding:.65rem .4rem;border-radius:10px;font-size:.95rem}
+.mobile-menu a:hover{background:var(--glass)}
+.mobile-menu.open{display:flex}
 
-/* toast */
-.toast-wrap{position:fixed;bottom:24px;inset-inline-start:50%;transform:translateX(-50%);z-index:300;display:flex;flex-direction:column;gap:10px;align-items:center}
-.toast{padding:13px 22px;border-radius:14px;background:var(--grad);color:#fff;font-weight:700;box-shadow:var(--shadow);
-  display:flex;align-items:center;gap:10px;animation:toastIn .3s ease;max-width:90vw}
-@keyframes toastIn{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+/* ---------- Cards grids ---------- */
+.grid{display:grid;gap:1.3rem}
+.grid-langs{grid-template-columns:repeat(4,1fr)}
+.grid-levels{grid-template-columns:repeat(3,1fr)}
+.grid-courses{grid-template-columns:repeat(3,1fr)}
+.grid-teachers{grid-template-columns:repeat(4,1fr)}
+.grid-reviews{grid-template-columns:repeat(3,1fr)}
 
-/* search overlay */
-.search-panel{position:fixed;top:var(--nav-h);inset-inline:0;z-index:90;padding:20px 0;background:var(--glass);
-  backdrop-filter:blur(24px);border-bottom:1px solid var(--glass-border);transform:translateY(-120%);transition:.3s;box-shadow:var(--shadow)}
-.search-panel.open{transform:translateY(0)}
-.search-panel input{width:100%;padding:16px 18px;border-radius:16px;border:1.5px solid var(--line);background:var(--glass-strong);
-  color:var(--ink);font-family:inherit;font-size:1.05rem;font-weight:600}
-.search-results{margin-top:14px;display:flex;flex-direction:column;gap:8px;max-height:50vh;overflow:auto}
-.sr{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;cursor:pointer;transition:.15s;font-weight:600}
-.sr:hover{background:rgba(139,92,246,.1)}
-.sr .ic{width:38px;height:38px;border-radius:10px;background:var(--grad-soft);display:grid;place-items:center;flex:none}
+/* language card */
+.lang-card{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  border:1px solid var(--stroke-soft);
+  background:var(--panel);
+  transition:var(--tr);cursor:pointer;
+  box-shadow:var(--shadow);
+}
+.lang-card:hover{transform:translateY(-6px);border-color:var(--stroke)}
+.lang-img{height:200px;overflow:hidden}
+.lang-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.22,.8,.28,1);filter:saturate(.85) brightness(.85)}
+.lang-card:hover .lang-img img{transform:scale(1.07)}
+.lang-body{padding:1.1rem 1.2rem 1.3rem;position:relative}
+.lang-flag{
+  position:absolute;top:-24px;inset-inline-start:1.1rem;
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  font-size:1.35rem;background:rgba(13,13,16,.9);
+  border:1px solid var(--gold);backdrop-filter:blur(8px);
+}
+.lang-body h3{margin-top:1.1rem;font-size:1.12rem;font-weight:700}
+.lang-body p{color:var(--muted);font-size:.85rem;margin-top:.2rem}
+.lang-meta{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem;font-size:.8rem}
+.lang-meta span{color:var(--gold)}
+.lang-meta b{color:var(--muted);font-weight:400}
+
+/* level card */
+.level-card{padding:1.5rem 1.4rem;transition:var(--tr)}
+.level-card:hover{border-color:var(--stroke);transform:translateY(-4px)}
+.level-tag{
+  font-family:'Noto Kufi Arabic';font-weight:800;font-size:1.5rem;
+  background:linear-gradient(120deg,var(--gold-light),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.level-card h3{font-size:1.02rem;margin:.4rem 0 .3rem}
+.level-card p{color:var(--muted);font-size:.86rem}
+
+/* course card */
+.course-card{
+  overflow:hidden;border-radius:var(--radius);background:var(--panel);
+  border:1px solid var(--stroke-soft);transition:var(--tr);
+  display:flex;flex-direction:column;box-shadow:var(--shadow);
+}
+.course-card:hover{transform:translateY(-6px);border-color:var(--stroke)}
+.course-img{height:170px;overflow:hidden;position:relative}
+.course-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.85);transition:transform 1.2s cubic-bezier(.22,.8,.28,1)}
+.course-card:hover .course-img img{transform:scale(1.06)}
+.course-badge{
+  position:absolute;top:.8rem;inset-inline-start:.8rem;
+  background:rgba(6,6,7,.75);border:1px solid var(--stroke);
+  color:var(--gold-light);font-size:.72rem;font-weight:700;
+  padding:.25rem .7rem;border-radius:999px;backdrop-filter:blur(8px);
+}
+.course-body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;flex:1}
+.course-body h3{font-size:1.02rem;font-weight:700}
+.course-body .meta{display:flex;gap:1rem;color:var(--muted);font-size:.78rem;margin:.5rem 0 .8rem}
+.course-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
+.price{font-family:'Noto Kufi Arabic';font-weight:800;color:var(--gold-light);font-size:1.05rem}
+.price small{font-size:.68rem;color:var(--muted);font-weight:400}
+.enroll-btn{padding:.55rem 1.1rem;font-size:.82rem;border-radius:11px}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.chip{
+  padding:.45rem 1.1rem;border-radius:999px;font-size:.83rem;font-weight:600;
+  background:var(--glass);border:1px solid var(--stroke-soft);color:var(--muted);
+  transition:var(--tr);
+}
+.chip:hover{color:var(--gold-light)}
+.chip.active{background:linear-gradient(135deg,rgba(212,175,55,.22),rgba(212,175,55,.08));color:var(--gold-light);border-color:var(--stroke)}
+
+/* teacher card */
+.teacher-card{text-align:center;padding:1.6rem 1rem 1.4rem;transition:var(--tr)}
+.teacher-card:hover{transform:translateY(-4px);border-color:var(--stroke)}
+.teacher-photo{
+  width:96px;height:96px;border-radius:50%;overflow:hidden;margin:0 auto 1rem;
+  border:2px solid var(--gold);padding:3px;background:var(--black);
+}
+.teacher-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:saturate(.85)}
+.teacher-card h3{font-size:1rem}
+.teacher-card .t-lang{color:var(--gold);font-size:.8rem;font-weight:700;margin:.15rem 0 .4rem}
+.teacher-card p{color:var(--muted);font-size:.82rem}
+
+/* review card */
+.review-card{padding:1.5rem 1.4rem;display:flex;flex-direction:column;gap:.9rem;transition:var(--tr)}
+.review-card:hover{border-color:var(--stroke)}
+.stars{color:var(--gold);letter-spacing:.15em;font-size:.85rem}
+.review-card blockquote{color:#d8d6cd;font-size:.92rem}
+.review-who{display:flex;align-items:center;gap:.7rem;margin-top:auto}
+.review-who .avatar{
+  width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(212,175,55,.14);border:1px solid var(--stroke);
+  color:var(--gold-light);font-weight:800;font-family:'Noto Kufi Arabic';font-size:.85rem;
+}
+.review-who b{font-size:.88rem;display:block}
+.review-who span{font-size:.74rem;color:var(--muted)}
 
 /* footer */
-footer{background:var(--glass);border-top:1px solid var(--glass-border);backdrop-filter:blur(18px);padding:40px 0 24px;margin-top:40px}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;margin-bottom:30px}
-.foot-grid h5{font-family:'Cairo';font-weight:800;margin-bottom:14px;font-size:1rem}
-.foot-grid a{display:block;color:var(--muted);padding:5px 0;font-size:.9rem;font-weight:600;transition:.2s}
-.foot-grid a:hover{color:var(--royal)}
-.foot-bottom{text-align:center;color:var(--muted);font-size:.85rem;padding-top:20px;border-top:1px solid var(--line)}
-@media(max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}}
+footer{margin-top:5rem;border-top:1px solid var(--stroke-soft);padding:2.5rem 0;text-align:center;color:var(--muted);font-size:.85rem}
+footer b{color:var(--gold)}
 
-.empty{text-align:center;padding:50px 20px;color:var(--muted)}
-.empty .ic{font-size:3rem;margin-bottom:12px;opacity:.5}
-.hidden{display:none!important}
+/* ---------- Modal ---------- */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(3,3,4,.7);backdrop-filter:blur(8px);
+  z-index:90;display:none;align-items:center;justify-content:center;padding:1rem;
+}
+.modal-backdrop.open{display:flex;animation:fadeIn .35s}
+.modal{
+  width:min(460px,100%);max-height:90vh;overflow-y:auto;
+  background:rgba(16,16,20,.92);border:1px solid var(--stroke);
+  border-radius:24px;padding:1.8rem 1.6rem;box-shadow:var(--shadow);
+  animation:rise .45s cubic-bezier(.22,.8,.28,1);
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.modal h3{font-size:1.15rem;margin-bottom:.2rem}
+.modal .sub{color:var(--muted);font-size:.85rem;margin-bottom:1.2rem}
+.field{margin-bottom:.95rem}
+.field label{display:block;font-size:.82rem;font-weight:700;color:var(--gold-light);margin-bottom:.35rem}
+.field input,.field select,.field textarea{
+  width:100%;background:rgba(255,255,255,.05);border:1px solid var(--stroke-soft);
+  border-radius:12px;padding:.7rem .9rem;color:var(--text);font-size:.92rem;
+  transition:border-color .3s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.field select option{background:#141418;color:var(--text)}
+.field .hint{font-size:.72rem;color:var(--danger);margin-top:.3rem;display:none}
+.field.error input{border-color:var(--danger)}
+.field.error .hint{display:block}
+.modal-actions{display:flex;gap:.6rem;margin-top:1.3rem}
+.modal-actions .btn{flex:1}
+.success-box{text-align:center;padding:1.5rem 0}
+.success-box .ok-ring{
+  width:70px;height:70px;border-radius:50%;margin:0 auto 1rem;display:grid;place-items:center;
+  border:2px solid var(--gold);color:var(--gold);font-size:1.8rem;
+}
+
+/* ---------- Toast ---------- */
+.toast{
+  position:fixed;bottom:1.4rem;right:50%;transform:translate(50%,20px);
+  background:rgba(16,16,20,.95);border:1px solid var(--stroke);color:var(--gold-light);
+  padding:.75rem 1.4rem;border-radius:999px;font-size:.88rem;font-weight:600;
+  z-index:120;opacity:0;pointer-events:none;transition:var(--tr);backdrop-filter:blur(10px);
+}
+.toast.show{opacity:1;transform:translate(50%,0)}
+
+/* ---------- Admin ---------- */
+.admin-page{display:none;padding:2.5rem 0 4rem}
+.admin-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.8rem}
+.admin-head h2{font-size:1.4rem}
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.stat{padding:1.2rem 1.3rem}
+.stat b{font-family:'Noto Kufi Arabic';font-size:1.6rem;color:var(--gold-light);display:block}
+.stat span{color:var(--muted);font-size:.8rem}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.tab-btn{
+  padding:.55rem 1.2rem;border-radius:12px;font-size:.86rem;font-weight:700;
+  background:var(--glass);border:1px solid var(--stroke-soft);color:var(--muted);transition:var(--tr);
+}
+.tab-btn.active{background:linear-gradient(135deg,rgba(212,175,55,.25),rgba(212,175,55,.08));color:var(--gold-light);border-color:var(--stroke)}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeIn .4s}
+.admin-card{padding:1.4rem;margin-bottom:1.4rem}
+.admin-card h3{font-size:1rem;margin-bottom:1rem;color:var(--gold-light)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem}
+.form-grid .full{grid-column:1/-1}
+.table-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--stroke-soft)}
+table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:600px}
+th{background:rgba(212,175,55,.08);color:var(--gold-light);font-weight:700;text-align:right;padding:.75rem .9rem;font-size:.8rem}
+td{padding:.7rem .9rem;border-top:1px solid var(--stroke-soft);color:#d8d6cd;vertical-align:middle}
+tr:hover td{background:rgba(255,255,255,.02)}
+.mini-img{width:52px;height:36px;object-fit:cover;border-radius:8px;border:1px solid var(--stroke-soft)}
+.row-actions{display:flex;gap:.4rem}
+.icon-btn{
+  width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-size:.85rem;
+  background:var(--glass);border:1px solid var(--stroke-soft);color:var(--muted);transition:var(--tr);
+}
+.icon-btn:hover{color:var(--gold-light);border-color:var(--stroke)}
+.icon-btn.del:hover{color:var(--danger);border-color:rgba(224,112,95,.4)}
+.status-pill{padding:.2rem .7rem;border-radius:999px;font-size:.72rem;font-weight:700;display:inline-block}
+.status-new{background:rgba(212,175,55,.15);color:var(--gold-light);border:1px solid var(--stroke)}
+.status-ok{background:rgba(143,201,143,.12);color:var(--ok);border:1px solid rgba(143,201,143,.3)}
+.status-no{background:rgba(224,112,95,.12);color:var(--danger);border:1px solid rgba(224,112,95,.3)}
+.empty-note{color:var(--muted);font-size:.85rem;text-align:center;padding:1.6rem}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1024px){
+  .grid-langs,.grid-teachers{grid-template-columns:repeat(3,1fr)}
+  .grid-courses,.grid-reviews{grid-template-columns:repeat(2,1fr)}
+  .admin-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:768px){
+  .nav-links{display:none}
+  .burger{display:grid;place-items:center}
+  .nav-cta .btn-gold{display:none}
+  .section{padding:3.6rem 0 .5rem}
+  .grid-langs,.grid-levels,.grid-courses,.grid-teachers,.grid-reviews{grid-template-columns:repeat(2,1fr)}
+  .grid{gap:.8rem}
+  .lang-img{height:120px}
+  .course-img{height:110px}
+  .lang-body,.course-body{padding:.85rem .8rem 1rem}
+  .lang-body h3,.course-body h3{font-size:.9rem}
+  .lang-flag{width:38px;height:38px;font-size:1.05rem;top:-19px}
+  .course-foot{flex-direction:column;align-items:stretch;gap:.6rem}
+  .enroll-btn{width:100%}
+  .teacher-photo{width:72px;height:72px}
+  .level-card{padding:1.1rem 1rem}
+  .form-grid{grid-template-columns:1fr}
+  .review-card blockquote{font-size:.84rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
-<div class="aura"><span class="a"></span><span class="b"></span><span class="c"></span></div>
 
-<!-- NAVBAR -->
-<nav class="nav">
-  <div class="container">
-    <a href="#/" class="brand"><span class="mark">T</span><span>Taline<b> Space</b></span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="#/courses" data-route="courses">الدورات</a>
-      <a href="#/teachers" data-route="teachers">الأساتذة</a>
-      <a href="#/levels" data-route="levels">المستويات</a>
-      <a href="#/tests" data-route="tests">الاختبارات</a>
-      <a href="#/subscriptions" data-route="subscriptions">الاشتراكات</a>
-      <a href="#/contact" data-route="contact">تواصل معنا</a>
+<!-- ================= NAV ================= -->
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#" onclick="showSite();return false">
+      <span class="logo-mark">ت</span>
+      <span class="logo-name">تالين سبيس<small>TALINE.SPACE</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#languages" onclick="showSite()">اللغات</a></li>
+      <li><a href="#levels" onclick="showSite()">المستويات</a></li>
+      <li><a href="#courses" onclick="showSite()">الدورات</a></li>
+      <li><a href="#teachers" onclick="showSite()">المدرسون</a></li>
+      <li><a href="#reviews" onclick="showSite()">آراء الطلاب</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="btn btn-ghost admin-link" onclick="toggleAdmin()">⚙ غرفة المسؤول</button>
+      <button class="btn btn-gold" style="padding:.55rem 1.2rem;font-size:.85rem" onclick="openEnroll('')">سجّل الآن</button>
+      <button class="burger" aria-label="القائمة" onclick="document.getElementById('mMenu').classList.toggle('open')">☰</button>
     </div>
-    <div class="nav-actions">
-      <button class="icon-btn" id="searchBtn" title="بحث" aria-label="بحث">🔍</button>
-      <button class="icon-btn" id="themeBtn" title="الوضع الليلي" aria-label="تبديل الوضع">🌙</button>
-      <button class="icon-btn" id="notiBtn" title="الإشعارات" aria-label="الإشعارات">🔔<span class="dot"></span></button>
-      <button class="btn btn-ghost btn-sm" id="loginBtn"><span class="label">دخول الطالب</span><span aria-hidden>👤</span></button>
-      <a href="#/admin" class="btn btn-primary btn-sm"><span class="label">لوحة المسؤول</span><span aria-hidden>⚙️</span></a>
-      <button class="icon-btn burger" id="burger" aria-label="القائمة">☰</button>
-    </div>
+  </div>
+  <div class="mobile-menu" id="mMenu">
+    <a href="#languages" onclick="closeMenu()">اللغات</a>
+    <a href="#levels" onclick="closeMenu()">المستويات</a>
+    <a href="#courses" onclick="closeMenu()">الدورات</a>
+    <a href="#teachers" onclick="closeMenu()">المدرسون</a>
+    <a href="#reviews" onclick="closeMenu()">آراء الطلاب</a>
+    <a href="#" onclick="closeMenu();openEnroll('')" style="color:var(--gold-light)">✦ سجّل الآن</a>
   </div>
 </nav>
 
-<!-- SEARCH PANEL -->
-<div class="search-panel" id="searchPanel">
-  <div class="container">
-    <input type="text" id="searchInput" placeholder="ابحث عن دورة، أستاذ، أو مادة…" autocomplete="off">
-    <div class="search-results" id="searchResults"></div>
+<!-- ================= SITE ================= -->
+<main id="sitePage">
+
+  <!-- اللغات -->
+  <section class="section" id="languages">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">عشر لغات، أفق واحد</span>
+        <h2>اختر <span class="gold-text">لغتك</span> وابدأ رحلتك</h2>
+        <p>برامج مصمّمة بعناية لتوصلك من الحرف الأول إلى الطلاقة، بإشراف نخبة من المدرسين.</p>
+      </div>
+      <div class="grid grid-langs" id="langsGrid"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- المستويات -->
+  <section class="section" id="levels">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">وفق الإطار الأوروبي CEFR</span>
+        <h2>المستويات <span class="gold-text">التعليمية</span></h2>
+        <p>مسار تصاعدي واضح يقيس تقدّمك بدقة في كل مرحلة.</p>
+      </div>
+      <div class="grid grid-levels" id="levelsGrid"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- الدورات -->
+  <section class="section" id="courses">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">برامج مكثّفة ومرنة</span>
+        <h2>الدورات <span class="gold-text">المتاحة</span></h2>
+        <p>حصص مباشرة، مجموعات صغيرة، وشهادة معتمدة عند إتمام كل دورة.</p>
+      </div>
+      <div class="filters" id="courseFilters"></div>
+      <div class="grid grid-courses" id="coursesGrid"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- المدرسون -->
+  <section class="section" id="teachers">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">نخبة الأساتذة</span>
+        <h2>تعلّم على يد <span class="gold-text">الأفضل</span></h2>
+        <p>مدرسون معتمدون بخبرة دولية وشغف حقيقي بالتعليم.</p>
+      </div>
+      <div class="grid grid-teachers" id="teachersGrid"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- الآراء -->
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">قالوا عنّا</span>
+        <h2>آراء <span class="gold-text">طلابنا</span></h2>
+        <p>تجارب حقيقية من طلاب وصلوا إلى أهدافهم معنا.</p>
+      </div>
+      <div class="grid grid-reviews" id="reviewsGrid"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p><b>تالين سبيس</b> — أكاديمية اللغات الفاخرة · الإنجليزية · الفرنسية · التركية · العربية · الإسبانية · الألمانية · الإيطالية · الروسية · الصينية · الكورية</p>
+      <p style="margin-top:.3rem;font-size:.78rem">© 2026 جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+</main>
+
+<!-- ================= ADMIN ================= -->
+<main class="admin-page" id="adminPage">
+  <div class="wrap">
+    <div class="admin-head">
+      <div>
+        <span class="eyebrow">لوحة التحكم</span>
+        <h2>غرفة <span class="gold-text">المسؤول</span></h2>
+      </div>
+      <div style="display:flex;gap:.6rem">
+        <button class="btn btn-ghost" onclick="resetData()" style="font-size:.82rem">↺ استعادة البيانات الافتراضية</button>
+        <button class="btn btn-gold" onclick="showSite()" style="font-size:.82rem">← العودة للموقع</button>
+      </div>
+    </div>
+
+    <div class="admin-stats">
+      <div class="glass stat"><b id="stCourses">0</b><span>دورة نشطة</span></div>
+      <div class="glass stat"><b id="stLangs">0</b><span>لغة متاحة</span></div>
+      <div class="glass stat"><b id="stTeachers">0</b><span>مدرّس</span></div>
+      <div class="glass stat"><b id="stOrders">0</b><span>طلب تسجيل</span></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tabOrders" onclick="switchTab(this)">📋 الطلبات والطلاب</button>
+      <button class="tab-btn" data-tab="tabCourses" onclick="switchTab(this)">🎓 الدورات</button>
+      <button class="tab-btn" data-tab="tabLangs" onclick="switchTab(this)">🌍 اللغات</button>
+      <button class="tab-btn" data-tab="tabTeachers" onclick="switchTab(this)">👨‍🏫 المدرسون</button>
+      <button class="tab-btn" data-tab="tabReviews" onclick="switchTab(this)">💬 آراء الطلاب</button>
+    </div>
+
+    <!-- الطلبات -->
+    <div class="tab-panel active" id="tabOrders">
+      <div class="glass admin-card">
+        <h3>طلبات التسجيل الواردة</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>الاسم</th><th>الهاتف</th><th>الولاية</th><th>الدورة</th><th>التاريخ</th><th>الحالة</th><th>إجراءات</th></tr></thead>
+            <tbody id="ordersBody"></tbody>
+          </table>
+        </div>
+        <div class="empty-note" id="ordersEmpty" style="display:none">لا توجد طلبات تسجيل بعد.</div>
+      </div>
+    </div>
+
+    <!-- الدورات -->
+    <div class="tab-panel" id="tabCourses">
+      <div class="glass admin-card">
+        <h3 id="courseFormTitle">＋ إضافة دورة جديدة</h3>
+        <div class="form-grid">
+          <div class="field"><label>عنوان الدورة</label><input id="cTitle" placeholder="مثال: الإنجليزية للمبتدئين"></div>
+          <div class="field"><label>اللغة</label><select id="cLang"></select></div>
+          <div class="field"><label>المستوى</label>
+            <select id="cLevel"><option>A1 مبتدئ</option><option>A2 أساسي</option><option>B1 متوسط</option><option>B2 فوق المتوسط</option><option>C1 متقدم</option><option>C2 إتقان</option></select>
+          </div>
+          <div class="field"><label>المدة</label><input id="cDuration" placeholder="مثال: 8 أسابيع"></div>
+          <div class="field"><label>السعر (دج)</label><input id="cPrice" type="number" placeholder="12000"></div>
+          <div class="field"><label>رابط الصورة</label><input id="cImg" placeholder="https://images.unsplash.com/..."></div>
+          <div class="modal-actions full" style="margin-top:0">
+            <button class="btn btn-gold" onclick="saveCourse()" id="courseSaveBtn">حفظ الدورة</button>
+            <button class="btn btn-ghost" onclick="resetCourseForm()" id="courseCancelBtn" style="display:none">إلغاء التعديل</button>
+          </div>
+        </div>
+      </div>
+      <div class="glass admin-card">
+        <h3>الدورات الحالية</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>الصورة</th><th>العنوان</th><th>اللغة</th><th>المستوى</th><th>المدة</th><th>السعر</th><th>إجراءات</th></tr></thead>
+            <tbody id="coursesBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- اللغات -->
+    <div class="tab-panel" id="tabLangs">
+      <div class="glass admin-card">
+        <h3 id="langFormTitle">＋ إضافة لغة جديدة</h3>
+        <div class="form-grid">
+          <div class="field"><label>اسم اللغة</label><input id="lName" placeholder="مثال: الإسبانية"></div>
+          <div class="field"><label>الرمز (علم)</label><input id="lFlag" placeholder="🇪🇸"></div>
+          <div class="field full"><label>وصف قصير</label><input id="lDesc" placeholder="لغة عالمية يتحدثها..."></div>
+          <div class="field full"><label>رابط الصورة</label><input id="lImg" placeholder="https://images.unsplash.com/..."></div>
+          <div class="modal-actions full" style="margin-top:0">
+            <button class="btn btn-gold" onclick="saveLang()" id="langSaveBtn">حفظ اللغة</button>
+            <button class="btn btn-ghost" onclick="resetLangForm()" id="langCancelBtn" style="display:none">إلغاء التعديل</button>
+          </div>
+        </div>
+      </div>
+      <div class="glass admin-card">
+        <h3>اللغات الحالية</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>الصورة</th><th>العلم</th><th>الاسم</th><th>الوصف</th><th>إجراءات</th></tr></thead>
+            <tbody id="langsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- المدرسون -->
+    <div class="tab-panel" id="tabTeachers">
+      <div class="glass admin-card">
+        <h3 id="teacherFormTitle">＋ إضافة مدرّس</h3>
+        <div class="form-grid">
+          <div class="field"><label>الاسم الكامل</label><input id="tName" placeholder="أ. سمير بوعلام"></div>
+          <div class="field"><label>اللغة التي يدرّسها</label><input id="tLang" placeholder="الإنجليزية"></div>
+          <div class="field full"><label>نبذة</label><input id="tBio" placeholder="خبرة 10 سنوات..."></div>
+          <div class="field full"><label>رابط الصورة</label><input id="tImg" placeholder="https://images.unsplash.com/..."></div>
+          <div class="modal-actions full" style="margin-top:0">
+            <button class="btn btn-gold" onclick="saveTeacher()" id="teacherSaveBtn">حفظ المدرّس</button>
+            <button class="btn btn-ghost" onclick="resetTeacherForm()" id="teacherCancelBtn" style="display:none">إلغاء التعديل</button>
+          </div>
+        </div>
+      </div>
+      <div class="glass admin-card">
+        <h3>المدرسون الحاليون</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>الصورة</th><th>الاسم</th><th>اللغة</th><th>النبذة</th><th>إجراءات</th></tr></thead>
+            <tbody id="teachersBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- الآراء -->
+    <div class="tab-panel" id="tabReviews">
+      <div class="glass admin-card">
+        <h3 id="reviewFormTitle">＋ إضافة رأي</h3>
+        <div class="form-grid">
+          <div class="field"><label>اسم الطالب</label><input id="rName" placeholder="ياسمين ق."></div>
+          <div class="field"><label>الدورة</label><input id="rCourse" placeholder="الفرنسية B1"></div>
+          <div class="field"><label>التقييم (1-5)</label><input id="rStars" type="number" min="1" max="5" value="5"></div>
+          <div class="field full"><label>نص الرأي</label><textarea id="rText" rows="3" placeholder="تجربة رائعة..."></textarea></div>
+          <div class="modal-actions full" style="margin-top:0">
+            <button class="btn btn-gold" onclick="saveReview()" id="reviewSaveBtn">حفظ الرأي</button>
+            <button class="btn btn-ghost" onclick="resetReviewForm()" id="reviewCancelBtn" style="display:none">إلغاء التعديل</button>
+          </div>
+        </div>
+      </div>
+      <div class="glass admin-card">
+        <h3>الآراء المنشورة</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>الاسم</th><th>الدورة</th><th>التقييم</th><th>الرأي</th><th>إجراءات</th></tr></thead>
+            <tbody id="reviewsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ================= ENROLL MODAL ================= -->
+<div class="modal-backdrop" id="enrollBackdrop" onclick="if(event.target===this)closeEnroll()">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="نموذج التسجيل">
+    <div id="enrollForm">
+      <h3>سجّل في الدورة ✦</h3>
+      <p class="sub">املأ البيانات وسيتواصل معك فريقنا لتأكيد التسجيل.</p>
+      <div class="field" id="fName"><label>الاسم الكامل</label><input id="eName" placeholder="الاسم واللقب"><div class="hint">يرجى إدخال الاسم الكامل (حرفان على الأقل)</div></div>
+      <div class="field" id="fPhone"><label>رقم الهاتف</label><input id="ePhone" inputmode="numeric" maxlength="10" placeholder="05 / 06 / 07 XXXXXXXX"><div class="hint">أدخل رقمًا صحيحًا من 10 أرقام يبدأ بـ 05 أو 06 أو 07</div></div>
+      <div class="field"><label>الولاية</label><select id="eWilaya"></select></div>
+      <div class="field"><label>الدورة المطلوبة</label><select id="eCourse"></select></div>
+      <div class="modal-actions">
+        <button class="btn btn-gold" onclick="submitEnroll()">إرسال الطلب</button>
+        <button class="btn btn-ghost" onclick="closeEnroll()">إلغاء</button>
+      </div>
+    </div>
+    <div id="enrollSuccess" style="display:none" class="success-box">
+      <div class="ok-ring">✓</div>
+      <h3>تم استلام طلبك بنجاح</h3>
+      <p class="sub" style="margin-top:.4rem">سيتصل بك فريق تالين سبيس خلال 24 ساعة لتأكيد التسجيل.</p>
+      <button class="btn btn-gold" style="margin-top:.8rem" onclick="closeEnroll()">حسنًا</button>
+    </div>
   </div>
 </div>
 
-<main id="app"></main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="foot-grid">
-      <div>
-        <a href="#/" class="brand" style="margin-bottom:14px"><span class="mark">T</span><span>Taline<b> Space</b></span></a>
-        <p style="color:var(--muted);font-size:.9rem;max-width:280px">منصة تعليمية إلكترونية متكاملة تجمع بين الجمال البصري، سهولة الاستخدام، والأداء العالي.</p>
-      </div>
-      <div><h5>المنصة</h5><a href="#/courses">الدورات</a><a href="#/teachers">الأساتذة</a><a href="#/levels">المستويات</a><a href="#/tests">الاختبارات</a></div>
-      <div><h5>الحساب</h5><a href="#/dashboard">لوحتي الشخصية</a><a href="#/subscriptions">الاشتراكات</a><a href="#/admin">لوحة المسؤول</a></div>
-      <div><h5>الدعم</h5><a href="#/contact">تواصل معنا</a><a href="#/contact">الأسئلة الشائعة</a><a href="#/contact">سياسة الخصوصية</a></div>
-    </div>
-    <div class="foot-bottom">© 2026 Taline Space — جميع الحقوق محفوظة · صُمّم بعناية 💜</div>
-  </div>
-</footer>
-
-<div class="overlay" id="overlay"></div>
-<div class="toast-wrap" id="toastWrap"></div>
+<div class="toast" id="toast"></div>
 
 <script>
-/* ================= STATE / STORE ================= */
-const LS='taline_space_v1';
-const uid=()=>Math.random().toString(36).slice(2,9);
+/* =========================================================
+   TALINE.SPACE — بيانات + منطق كامل (localStorage)
+========================================================= */
+const LS_KEY = "talineSpaceData_v1";
 
-const SEED={
-  levels:[
-    {id:'l1',name:'السنة الأولى ثانوي',icon:'📗',courses:0},
-    {id:'l2',name:'السنة الثانية ثانوي',icon:'📘',courses:0},
-    {id:'l3',name:'السنة الثالثة ثانوي',icon:'📕',courses:0},
-    {id:'l4',name:'تحضير البكالوريا',icon:'🎓',courses:0},
+const WILAYAS = ["01 - أدرار","02 - الشلف","03 - الأغواط","04 - أم البواقي","05 - باتنة","06 - بجاية","07 - بسكرة","08 - بشار","09 - البليدة","10 - البويرة","11 - تمنراست","12 - تبسة","13 - تلمسان","14 - تيارت","15 - تيزي وزو","16 - الجزائر","17 - الجلفة","18 - جيجل","19 - سطيف","20 - سعيدة","21 - سكيكدة","22 - سيدي بلعباس","23 - عنابة","24 - قالمة","25 - قسنطينة","26 - المدية","27 - مستغانم","28 - المسيلة","29 - معسكر","30 - ورقلة","31 - وهران","32 - البيض","33 - إليزي","34 - برج بوعريريج","35 - بومرداس","36 - الطارف","37 - تندوف","38 - تيسمسيلت","39 - الوادي","40 - خنشلة","41 - سوق أهراس","42 - تيبازة","43 - ميلة","44 - عين الدفلى","45 - النعامة","46 - عين تموشنت","47 - غرداية","48 - غليزان","49 - تيميمون","50 - برج باجي مختار","51 - أولاد جلال","52 - بني عباس","53 - عين صالح","54 - عين قزام","55 - تقرت","56 - جانت","57 - المغير","58 - المنيعة"];
+
+const seedData = {
+  langs: [
+    {id:1, name:"الإنجليزية", flag:"🇬🇧", desc:"لغة العالم الأولى للأعمال والدراسة والسفر.", img:"https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80"},
+    {id:2, name:"الفرنسية", flag:"🇫🇷", desc:"لغة الأناقة والدبلوماسية والفرص المهنية.", img:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80"},
+    {id:3, name:"التركية", flag:"🇹🇷", desc:"جسر ثقافي واقتصادي بين الشرق والغرب.", img:"https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80"},
+    {id:4, name:"العربية", flag:"🇸🇦", desc:"الفصحى بإتقان: نحو، بلاغة، وتعبير راقٍ.", img:"https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&q=80"},
+    {id:5, name:"الإسبانية", flag:"🇪🇸", desc:"لغة شغف وحيوية، ثاني أكثر لغة محكية في العالم.", img:"https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=800&q=80"},
+    {id:6, name:"الألمانية", flag:"🇩🇪", desc:"بوابتك لأقوى اقتصاد في أوروبا وفرص الهندسة والتكنولوجيا.", img:"https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80"},
+    {id:7, name:"الإيطالية", flag:"🇮🇹", desc:"لغة الفن والموسيقى والموضة والطهي العالمي.", img:"https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&q=80"},
+    {id:8, name:"الروسية", flag:"🇷🇺", desc:"لغة الأدب العميق والعلوم والفضاء والأسواق الناشئة.", img:"https://images.unsplash.com/photo-1513326738677-b964603b136d?w=800&q=80"},
+    {id:9, name:"الصينية", flag:"🇨🇳", desc:"لغة المستقبل الاقتصادي والمليارات من المتحدثين حول العالم.", img:"https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80"},
+    {id:10, name:"الكورية", flag:"🇰🇷", desc:"لغة الثقافة الشعبية والتقنية المتقدمة والابتكار.", img:"https://images.unsplash.com/photo-1534274867514-d5b47ef89edc?w=800&q=80"}
   ],
-  teachers:[
-    {id:'t1',name:'أ. سارة بن عمر',subject:'الرياضيات',bio:'أستاذة رياضيات بخبرة 12 سنة في التعليم الثانوي.',initials:'س'},
-    {id:'t2',name:'أ. يوسف مرابط',subject:'الفيزياء',bio:'متخصص في تبسيط الفيزياء للطلاب.',initials:'ي'},
-    {id:'t3',name:'أ. أمينة صالحي',subject:'اللغة العربية',bio:'أستاذة أدب ولغة عربية.',initials:'أ'},
-    {id:'t4',name:'أ. كريم حداد',subject:'العلوم الطبيعية',bio:'خبير في العلوم الطبيعية والحياة.',initials:'ك'},
+  courses: [
+    {id:1, title:"الإنجليزية من الصفر", lang:"الإنجليزية", level:"A1 مبتدئ", duration:"8 أسابيع", price:12000, img:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80"},
+    {id:2, title:"محادثة إنجليزية مكثفة", lang:"الإنجليزية", level:"B2 فوق المتوسط", duration:"6 أسابيع", price:15000, img:"https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800&q=80"},
+    {id:3, title:"الفرنسية للدراسة والعمل", lang:"الفرنسية", level:"B1 متوسط", duration:"10 أسابيع", price:14000, img:"https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80"},
+    {id:4, title:"تحضير DELF B2", lang:"الفرنسية", level:"B2 فوق المتوسط", duration:"8 أسابيع", price:18000, img:"https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80"},
+    {id:5, title:"التركية للمبتدئين", lang:"التركية", level:"A1 مبتدئ", duration:"8 أسابيع", price:11000, img:"https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&q=80"},
+    {id:6, title:"العربية الفصحى المتقنة", lang:"العربية", level:"C1 متقدم", duration:"12 أسبوعًا", price:10000, img:"https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=80"},
+    {id:7, title:"الإسبانية خطوة بخطوة", lang:"الإسبانية", level:"A1 مبتدئ", duration:"8 أسابيع", price:13000, img:"https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800&q=80"},
+    {id:8, title:"الألمانية للأعمال", lang:"الألمانية", level:"B1 متوسط", duration:"10 أسابيع", price:16000, img:"https://images.unsplash.com/photo-1528728329032-2972f65dfb3f?w=800&q=80"},
+    {id:9, title:"الإيطالية للمسافرين", lang:"الإيطالية", level:"A2 أساسي", duration:"6 أسابيع", price:12000, img:"https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=800&q=80"},
+    {id:10, title:"الروسية للمبتدئين", lang:"الروسية", level:"A1 مبتدئ", duration:"10 أسابيع", price:14000, img:"https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80"},
+    {id:11, title:"الصينية للتجارة", lang:"الصينية", level:"B1 متوسط", duration:"12 أسبوعًا", price:20000, img:"https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80"},
+    {id:12, title:"الكورية K-Culture", lang:"الكورية", level:"A2 أساسي", duration:"8 أسابيع", price:15000, img:"https://images.unsplash.com/photo-1537151377170-0c26b0f7e1b5?w=800&q=80"}
   ],
-  courses:[
-    {id:'c1',title:'الدوال العددية والنهايات',subject:'الرياضيات',levelId:'l3',teacherId:'t1',emoji:'📐',lessons:24,tests:6,rating:4.9,price:2500,progress:65},
-    {id:'c2',title:'الميكانيك و الحركة',subject:'الفيزياء',levelId:'l3',teacherId:'t2',emoji:'⚛️',lessons:18,tests:5,rating:4.8,price:2200,progress:40},
-    {id:'c3',title:'النصوص الأدبية والحجاج',subject:'اللغة العربية',levelId:'l4',teacherId:'t3',emoji:'📖',lessons:20,tests:4,rating:4.7,price:1800,progress:0},
-    {id:'c4',title:'الوراثة و علم الأحياء',subject:'العلوم الطبيعية',levelId:'l2',teacherId:'t4',emoji:'🧬',lessons:16,tests:5,rating:4.9,price:2000,progress:20},
-    {id:'c5',title:'الأعداد المركبة',subject:'الرياضيات',levelId:'l4',teacherId:'t1',emoji:'🔢',lessons:14,tests:4,rating:4.8,price:2100,progress:0},
-    {id:'c6',title:'الكهرباء و المغناطيسية',subject:'الفيزياء',levelId:'l2',teacherId:'t2',emoji:'🔌',lessons:22,tests:6,rating:4.6,price:2300,progress:0},
+  teachers: [
+    {id:1, name:"أ. سمير بوعلام", lang:"الإنجليزية", bio:"ماجستير لسانيات، خبرة 12 سنة وشهادة CELTA.", img:"https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"},
+    {id:2, name:"أ. أمينة رحماني", lang:"الفرنسية", bio:"خريجة السوربون، مدرّبة معتمدة DELF/DALF.", img:"https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"},
+    {id:3, name:"أ. مراد قاسمي", lang:"التركية", bio:"عاش 8 سنوات في إسطنبول، مترجم محلّف.", img:"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"},
+    {id:4, name:"أ. نور الهدى شريف", lang:"العربية", bio:"دكتوراه في الأدب العربي، شغف بالبلاغة والنحو.", img:"https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"},
+    {id:5, name:"أ. كارلوس غارسيا", lang:"الإسبانية", bio:"متحدث أصلي من مدريد، حاصل على ماجستير ELE.", img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"},
+    {id:6, name:"أ. فاطمة مولر", lang:"الألمانية", bio:"دكتوراه في الأدب الألماني، خبرة 15 سنة في معهد غوته.", img:"https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&q=80"},
+    {id:7, name:"أ. ماركو بيليني", lang:"الإيطالية", bio:"مدرّب معتمد من جامعة روما، خبير في تدريس اللغات اللاتينية.", img:"https://images.unsplash.com/photo-1566492031773-4f4e44617d1a?w=400&q=80"},
+    {id:8, name:"أ. أولغا بتروفا", lang:"الروسية", bio:"خريجة جامعة موسكو، متخصصة في تدريس السلافية لغير الناطقين.", img:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80"}
   ],
-  students:[
-    {id:'s1',name:'وائل عمراني',email:'wail@taline.dz',plan:'المتقدّمة',status:'ok',joined:'2026-05-12'},
-    {id:'s2',name:'مريم بلقاسم',email:'meriem@mail.dz',plan:'المجانية',status:'wait',joined:'2026-06-01'},
-    {id:'s3',name:'أنس شريف',email:'anes@mail.dz',plan:'الأساسية',status:'ok',joined:'2026-06-20'},
-    {id:'s4',name:'ليلى حمداني',email:'leila@mail.dz',plan:'المتقدّمة',status:'no',joined:'2026-07-02'},
+  reviews: [
+    {id:1, name:"ياسمين ق.", course:"الفرنسية B1", stars:5, text:"المنصة غيّرت علاقتي بالفرنسية تمامًا. الحصص منظمة والمتابعة فردية وراقية."},
+    {id:2, name:"عبد الرؤوف م.", course:"الإنجليزية B2", stars:5, text:"نجحت في IELTS بمعدل 7.5 بفضل برنامج المحادثة المكثف. أنصح به بقوة."},
+    {id:3, name:"إكرام ب.", course:"التركية A1", stars:4, text:"أسلوب تعليمي ممتع وواضح، وبعد شهرين فقط صرت أتواصل بثقة أثناء سفري لتركيا."},
+    {id:4, name:"لينا ح.", course:"الإسبانية A1", stars:5, text:"المدرّس كارلوس رائع جدًا، جعلني أعشق الإسبانية من أول حصة!"},
+    {id:5, name:"كريم ز.", course:"الصينية للتجارة", stars:5, text:"دورة احترافية جدًا، ساعدتني في التفاوض مع موردين صينيين بثقة."}
   ],
-  plans:[
-    {id:'p1',name:'المجانية',price:0,pop:false,features:['الوصول لـ 3 دورات','اختبارات محدودة','دعم عبر البريد']},
-    {id:'p2',name:'الأساسية',price:1500,pop:true,features:['وصول لكل الدورات','اختبارات غير محدودة','متابعة التقدّم','شهادات إتمام']},
-    {id:'p3',name:'المتقدّمة',price:2800,pop:false,features:['كل مزايا الأساسية','حصص مباشرة أسبوعية','تصحيح شخصي','أولوية الدعم']},
-  ],
-  messages:[
-    {id:'m1',name:'سمير ب.',email:'samir@mail.dz',text:'كيفاش نقدر نبدّل الاشتراك تاعي؟',date:'2026-07-14',read:false},
-    {id:'m2',name:'نور الهدى',email:'nour@mail.dz',text:'واش من مستوى مناسب للسنة 2؟',date:'2026-07-13',read:true},
-  ],
-  quiz:[
-    {q:'ما هي نهاية الدالة f(x)=1/x عندما x تؤول إلى ما لا نهاية؟',opts:['0','1','ما لا نهاية','غير معرّفة'],correct:0},
-    {q:'مشتقة الدالة f(x)=x² هي:',opts:['x','2x','x²','2'],correct:1},
-    {q:'الدالة الأصلية للدالة f(x)=2x هي:',opts:['x²+c','2x²','x','2'],correct:0},
-  ],
-  notifications:[
-    {id:'n1',title:'درس جديد متاح',body:'تمت إضافة درس «النهايات» في دورة الرياضيات',time:'قبل ساعة'},
-    {id:'n2',title:'نتيجة اختبار',body:'حصلت على 85% في اختبار الفيزياء 🎉',time:'قبل 3 ساعات'},
-    {id:'n3',title:'تذكير',body:'حصة مباشرة غدًا الساعة 18:00',time:'أمس'},
-  ],
-  results:[70,82,65,90,78,88],
-  settings:{platformName:'Taline Space',adminPass:'admin123',darkDefault:false},
-  auth:{student:null}
+  orders: []
 };
 
-let db=load();
-function load(){try{const d=JSON.parse(localStorage.getItem(LS));return d&&d.courses?d:structuredClone(SEED)}catch(e){return structuredClone(SEED)}}
-function save(){localStorage.setItem(LS,JSON.stringify(db))}
-function reseed(){db=structuredClone(SEED);save();toast('تمت إعادة تعيين البيانات');route()}
+let DATA = loadData();
 
-/* ================= HELPERS ================= */
-const $=s=>document.querySelector(s);
-const app=$('#app');
-const teacher=id=>db.teachers.find(t=>t.id===id)||{name:'—',initials:'؟'};
-const level=id=>db.levels.find(l=>l.id===id)||{name:'—'};
-const course=id=>db.courses.find(c=>c.id===id);
-const money=n=>n===0?'مجاني':n.toLocaleString('en-US')+' دج';
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-
+function loadData(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return JSON.parse(JSON.stringify(seedData));
+}
+function saveData(){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(DATA)); }catch(e){}
+}
+function uid(arr){ return arr.length ? Math.max(...arr.map(x=>x.id))+1 : 1; }
+function esc(s){ return String(s??"").replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function toast(msg){
-  const t=document.createElement('div');t.className='toast';t.innerHTML='<span>✓</span>'+esc(msg);
-  $('#toastWrap').appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transform='translateY(10px)';setTimeout(()=>t.remove(),300)},2600);
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(t._tm); t._tm = setTimeout(()=>t.classList.remove("show"), 2600);
 }
-function openModal(html){const o=$('#overlay');o.innerHTML='<div class="modal glass"><button class="close icon-btn" onclick="closeModal()">✕</button>'+html+'</div>';o.classList.add('show')}
-function closeModal(){$('#overlay').classList.remove('show')}
-$('#overlay').addEventListener('click',e=>{if(e.target.id==='overlay')closeModal()});
+function fmtPrice(p){ return Number(p).toLocaleString("ar-DZ"); }
 
-const ICONS={
-  book:'<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/></svg>',
-  test:'<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>',
-  star:'<svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3 6.9 7.5.6-5.7 5 1.7 7.3L12 24l-6.5 3.8L7.2 14 1.5 9l7.5-.6z" transform="scale(.9) translate(1 -1)"/></svg>',
-  check:'<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>',
-  play:'<svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>',
-  users:'<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-  file:'<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
-  edit:'<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4z"/></svg>',
-  trash:'<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>',
-};
+/* ---------- عرض الموقع ---------- */
+let activeFilter = "الكل";
 
-/* ================= ROUTER ================= */
-const routes={
-  '':viewHome,'/':viewHome,
-  '/courses':viewCourses,'/teachers':viewTeachers,'/levels':viewLevels,
-  '/tests':viewTests,'/subscriptions':viewSubs,'/contact':viewContact,
-  '/dashboard':viewDashboard,'/admin':viewAdmin,
-};
-function route(){
-  const hash=location.hash.replace('#','')||'/';
-  const [path,param]=hash.split(':');
-  window.scrollTo(0,0);
-  closeSearch();$('#navLinks').classList.remove('open');
-  if(path.startsWith('/course')){viewCourseDetail(param);}
-  else if(path.startsWith('/quiz')){viewQuiz(param);}
-  else{(routes[path]||viewHome)();}
-  document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.classList.toggle('active',hash.startsWith('/'+a.dataset.route));
+function renderLangs(){
+  document.getElementById("langsGrid").innerHTML = DATA.langs.map(l=>`
+    <article class="lang-card" onclick="filterByLang('${esc(l.name)}')">
+      <div class="lang-img"><img src="${esc(l.img)}" alt="${esc(l.name)}" loading="lazy"></div>
+      <div class="lang-body">
+        <div class="lang-flag">${esc(l.flag)}</div>
+        <h3>${esc(l.name)}</h3>
+        <p>${esc(l.desc)}</p>
+        <div class="lang-meta">
+          <span>${DATA.courses.filter(c=>c.lang===l.name).length} دورات</span>
+          <b>استكشف ←</b>
+        </div>
+      </div>
+    </article>`).join("");
+}
+
+function renderLevels(){
+  const levels = [
+    {tag:"A1 · A2", title:"المرحلة التأسيسية", desc:"الحروف، النطق، والجمل اليومية الأساسية لبناء قاعدة صلبة."},
+    {tag:"B1 · B2", title:"المرحلة المتوسطة", desc:"محادثات حقيقية، كتابة سليمة، وفهم المحتوى الأصلي بثقة."},
+    {tag:"C1 · C2", title:"مرحلة الإتقان", desc:"طلاقة أكاديمية ومهنية، وتحضير للشهادات الدولية المعتمدة."}
+  ];
+  document.getElementById("levelsGrid").innerHTML = levels.map(l=>`
+    <article class="glass level-card">
+      <div class="level-tag">${l.tag}</div>
+      <h3>${l.title}</h3>
+      <p>${l.desc}</p>
+    </article>`).join("");
+}
+
+function renderFilters(){
+  const names = ["الكل", ...DATA.langs.map(l=>l.name)];
+  document.getElementById("courseFilters").innerHTML = names.map(n=>`
+    <button class="chip ${n===activeFilter?"active":""}" onclick="setFilter('${esc(n)}')">${esc(n)}</button>`).join("");
+}
+function setFilter(n){ activeFilter = n; renderFilters(); renderCourses(); }
+function filterByLang(n){
+  setFilter(n);
+  document.getElementById("courses").scrollIntoView({behavior:"smooth"});
+}
+
+function renderCourses(){
+  const list = activeFilter==="الكل" ? DATA.courses : DATA.courses.filter(c=>c.lang===activeFilter);
+  const grid = document.getElementById("coursesGrid");
+  if(!list.length){
+    grid.innerHTML = `<p class="empty-note" style="grid-column:1/-1">لا توجد دورات في هذا القسم حاليًا.</p>`;
+    return;
+  }
+  grid.innerHTML = list.map(c=>`
+    <article class="course-card">
+      <div class="course-img">
+        <img src="${esc(c.img)}" alt="${esc(c.title)}" loading="lazy">
+        <span class="course-badge">${esc(c.level)}</span>
+      </div>
+      <div class="course-body">
+        <h3>${esc(c.title)}</h3>
+        <div class="meta"><span>🌍 ${esc(c.lang)}</span><span>⏱ ${esc(c.duration)}</span></div>
+        <div class="course-foot">
+          <div class="price">${fmtPrice(c.price)} <small>دج</small></div>
+          <button class="btn btn-gold enroll-btn" onclick="openEnroll(${c.id})">سجّل الآن</button>
+        </div>
+      </div>
+    </article>`).join("");
+}
+
+function renderTeachers(){
+  document.getElementById("teachersGrid").innerHTML = DATA.teachers.map(t=>`
+    <article class="glass teacher-card">
+      <div class="teacher-photo"><img src="${esc(t.img)}" alt="${esc(t.name)}" loading="lazy"></div>
+      <h3>${esc(t.name)}</h3>
+      <div class="t-lang">${esc(t.lang)}</div>
+      <p>${esc(t.bio)}</p>
+    </article>`).join("");
+}
+
+function renderReviews(){
+  document.getElementById("reviewsGrid").innerHTML = DATA.reviews.map(r=>`
+    <article class="glass review-card">
+      <div class="stars">${"★".repeat(r.stars)}${"☆".repeat(5-r.stars)}</div>
+      <blockquote>«${esc(r.text)}»</blockquote>
+      <div class="review-who">
+        <div class="avatar">${esc(r.name.trim()[0]||"؟")}</div>
+        <div><b>${esc(r.name)}</b><span>${esc(r.course)}</span></div>
+      </div>
+    </article>`).join("");
+}
+
+function renderSite(){
+  renderLangs(); renderLevels(); renderFilters(); renderCourses(); renderTeachers(); renderReviews();
+}
+
+/* ---------- نموذج التسجيل ---------- */
+function fillEnrollSelects(preselectId){
+  const w = document.getElementById("eWilaya");
+  w.innerHTML = WILAYAS.map(x=>`<option>${x}</option>`).join("");
+  w.value = "16 - الجزائر";
+  const c = document.getElementById("eCourse");
+  c.innerHTML = DATA.courses.map(x=>`<option value="${x.id}">${esc(x.title)} — ${esc(x.lang)}</option>`).join("");
+  if(preselectId) c.value = preselectId;
+}
+function openEnroll(courseId){
+  fillEnrollSelects(courseId);
+  document.getElementById("enrollForm").style.display = "";
+  document.getElementById("enrollSuccess").style.display = "none";
+  document.getElementById("fName").classList.remove("error");
+  document.getElementById("fPhone").classList.remove("error");
+  document.getElementById("eName").value = "";
+  document.getElementById("ePhone").value = "";
+  document.getElementById("enrollBackdrop").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeEnroll(){
+  document.getElementById("enrollBackdrop").classList.remove("open");
+  document.body.style.overflow = "";
+}
+function submitEnroll(){
+  const name = document.getElementById("eName").value.trim();
+  const phone = document.getElementById("ePhone").value.trim();
+  const wilaya = document.getElementById("eWilaya").value;
+  const courseId = Number(document.getElementById("eCourse").value);
+  const course = DATA.courses.find(c=>c.id===courseId);
+
+  let ok = true;
+  const fN = document.getElementById("fName"), fP = document.getElementById("fPhone");
+  fN.classList.toggle("error", name.length < 2); if(name.length < 2) ok = false;
+  const phoneOk = /^0[567]\d{8}$/.test(phone);
+  fP.classList.toggle("error", !phoneOk); if(!phoneOk) ok = false;
+  if(!ok) return;
+
+  DATA.orders.unshift({
+    id: uid(DATA.orders),
+    name, phone, wilaya,
+    course: course ? `${course.title} (${course.lang})` : "—",
+    date: new Date().toLocaleDateString("ar-DZ", {day:"2-digit", month:"2-digit", year:"numeric"}),
+    status: "new"
   });
-}
-window.addEventListener('hashchange',route);
-
-/* ================= VIEWS ================= */
-function viewHome(){
-  const feat=db.courses.slice(0,6);
-  app.innerHTML=`<div class="view">
-   <!-- HERO SECTION REMOVED -->
-
-   <!-- FEATURES -->
-   <section class="section"><div class="container">
-     <div class="section-head"><span class="eyebrow">لماذا Taline Space</span><h2>كل ما يحتاجه الطالب في منصة واحدة</h2></div>
-     <div class="tiles">
-       ${tile('🎥','دروس فيديو عالية الجودة','محتوى منظّم حسب المستوى والمادة')}
-       ${tile('📝','اختبارات إلكترونية','قيّم مستواك فورًا مع تصحيح تلقائي')}
-       ${tile('📈','متابعة التقدّم','تحليلات مرئية دقيقة لنتائجك')}
-       ${tile('🏅','شهادات معتمدة','احصل على شهادة عند إتمام الدورة')}
-     </div>
-   </div></section>
-
-   <!-- COURSES -->
-   <section class="section" style="padding-top:0"><div class="container">
-     <div class="section-head"><span class="eyebrow">الأكثر رواجًا</span><h2>دورات مميّزة لك</h2><p>ابدأ رحلتك مع نخبة من أفضل الدورات التعليمية</p></div>
-     <div class="courses-grid">${feat.map(courseCard).join('')}</div>
-     <div style="text-align:center;margin-top:34px"><a href="#/courses" class="btn btn-ghost">عرض كل الدورات ←</a></div>
-   </div></section>
-
-   <!-- CTA -->
-   <section class="section"><div class="container">
-     <div class="glass" style="padding:48px 30px;text-align:center;background:var(--grad);color:#fff;border:none;box-shadow:var(--shadow)">
-       <h2 style="font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:12px">جاهز لتبدأ رحلتك التعليمية؟</h2>
-       <p style="opacity:.9;max-width:480px;margin:0 auto 26px;font-size:1.05rem">انضمّ اليوم واحصل على وصول كامل لكل الدورات والاختبارات.</p>
-       <button class="btn btn-gold" onclick="openLogin()">أنشئ حسابك مجانًا</button>
-     </div>
-   </div></section>
-  </div>`;
-}
-const statBox=(b,s)=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`;
-const tile=(ic,h,p)=>`<div class="tile glass"><div class="ic">${ic}</div><h4>${h}</h4><p>${p}</p></div>`;
-
-function courseCard(c){
-  const t=teacher(c.teacherId);
-  return `<article class="card glass" onclick="location.hash='#/course:${c.id}'">
-    <div class="card-media"><div class="pat"></div><div class="emoji">${c.emoji}</div><span class="lvl">${level(c.levelId).name}</span></div>
-    <div class="card-body">
-      <span class="card-subject">${esc(c.subject)}</span>
-      <h3>${esc(c.title)}</h3>
-      <div class="teacher"><span class="av">${t.initials}</span>${esc(t.name)}</div>
-      <div class="card-meta">
-        <span>${ICONS.book} ${c.lessons} درس</span>
-        <span>${ICONS.test} ${c.tests} اختبار</span>
-      </div>
-      <div class="card-foot">
-        <span class="rating">${ICONS.star} ${c.rating}</span>
-        <span class="btn btn-primary btn-sm">ابدأ →</span>
-      </div>
-    </div>
-  </article>`;
+  saveData();
+  document.getElementById("enrollForm").style.display = "none";
+  document.getElementById("enrollSuccess").style.display = "";
+  renderAdmin();
 }
 
-function viewCourses(){
-  const subjects=[...new Set(db.courses.map(c=>c.subject))];
-  app.innerHTML=`<div class="view"><section class="section"><div class="container">
-    <div class="section-head"><span class="eyebrow">مكتبة الدورات</span><h2>استكشف كل الدورات</h2><p>اختر مادتك وابدأ التعلّم فورًا</p></div>
-    <div class="filters" id="filters">
-      <button class="chip active" data-s="all">الكل</button>
-      ${subjects.map(s=>`<button class="chip" data-s="${esc(s)}">${esc(s)}</button>`).join('')}
-    </div>
-    <div class="courses-grid" id="courseGrid">${db.courses.map(courseCard).join('')}</div>
-  </div></section></div>`;
-  $('#filters').addEventListener('click',e=>{
-    const b=e.target.closest('.chip');if(!b)return;
-    document.querySelectorAll('#filters .chip').forEach(c=>c.classList.remove('active'));b.classList.add('active');
-    const s=b.dataset.s;
-    const list=s==='all'?db.courses:db.courses.filter(c=>c.subject===s);
-    $('#courseGrid').innerHTML=list.length?list.map(courseCard).join(''):`<div class="empty" style="grid-column:1/-1"><div class="ic">🔍</div>لا توجد دورات في هذه المادة</div>`;
-  });
+/* ---------- التنقل ---------- */
+function showSite(){
+  document.getElementById("adminPage").style.display = "none";
+  document.getElementById("sitePage").style.display = "";
+}
+function toggleAdmin(){
+  closeMenu();
+  document.getElementById("sitePage").style.display = "none";
+  document.getElementById("adminPage").style.display = "block";
+  renderAdmin();
+  window.scrollTo({top:0});
+}
+function closeMenu(){ document.getElementById("mMenu").classList.remove("open"); }
+function switchTab(btn){
+  document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+  document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
+  btn.classList.add("active");
+  document.getElementById(btn.dataset.tab).classList.add("active");
 }
 
-function viewCourseDetail(id){
-  const c=course(id);
-  if(!c){app.innerHTML=notFound();return;}
-  const t=teacher(c.teacherId);
-  const lessons=Array.from({length:Math.min(c.lessons,8)},(_,i)=>({n:i+1,title:['مقدمة الدرس','المفاهيم الأساسية','أمثلة محلولة','تمارين تطبيقية','حالات خاصة','تمارين شاملة','مراجعة','اختبار تقييمي'][i],dur:(8+i*3)+' د',done:i<Math.floor(c.progress/100*8)}));
-  app.innerHTML=`<div class="view"><section class="detail-hero"><div class="container">
-    <a href="#/courses" style="color:var(--muted);font-weight:700;font-size:.9rem;display:inline-block;margin-bottom:18px">← رجوع للدورات</a>
-    <div class="detail-top">
-      <div class="player" id="player">
-        <div class="pat" style="position:absolute;inset:0;opacity:.4;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.3),transparent 50%)"></div>
-        <div class="play" onclick="toast('▶️ تشغيل الدرس الأول')">${ICONS.play}</div>
-        <div class="now">${esc(c.title)} — الدرس 1</div>
-      </div>
-      <div class="detail-info">
-        <span class="card-subject">${esc(c.subject)} · ${level(c.levelId).name}</span>
-        <h1>${esc(c.title)}</h1>
-        <div class="row">
-          <span>${ICONS.book} ${c.lessons} درس</span>
-          <span>${ICONS.test} ${c.tests} اختبار</span>
-          <span class="rating">${ICONS.star} ${c.rating}</span>
-        </div>
-        <div class="teacher" style="margin-bottom:8px"><span class="av" style="width:32px;height:32px">${t.initials}</span><div><b style="font-family:Cairo">${esc(t.name)}</b><br><span style="font-size:.8rem;color:var(--muted)">${esc(t.subject)}</span></div></div>
-        <div class="progress-wrap"><div class="lbl"><span>تقدّمك في الدورة</span><span>${c.progress}%</span></div><div class="bar"><i style="width:${c.progress}%"></i></div></div>
-        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="location.hash='#/quiz:${c.id}'">${c.progress>0?'متابعة التعلّم':'ابدأ الدورة'} ←</button>
-      </div>
-    </div>
-
-    <div class="tabs" id="tabs">
-      <button class="tab active" data-t="lessons">الدروس</button>
-      <button class="tab" data-t="files">الملفات</button>
-      <button class="tab" data-t="tests">الاختبارات</button>
-    </div>
-    <div id="tabContent"></div>
-  </div></section></div>`;
-
-  const tabContent={
-    lessons:()=>lessons.map(l=>`<div class="lesson glass ${l.done?'done':''}" onclick="toast('${l.done?'✓ مكتمل':'▶️ '+l.title}')">
-      <span class="num">${l.done?ICONS.check:l.n}</span>
-      <div class="txt"><b>${l.title}</b><span>الدرس ${l.n}</span></div>
-      <span class="dur">${l.dur}</span></div>`).join(''),
-    files:()=>['ملخص الدرس.pdf','التمارين المحلولة.pdf','بطاقة المفاهيم.pdf','امتحانات سابقة.pdf'].map(f=>`<div class="file-row glass" onclick="toast('⬇️ تحميل ${f}')">
-      <span class="fic">${ICONS.file}</span><div class="txt" style="flex:1"><b style="font-family:Cairo">${f}</b><span style="font-size:.8rem;color:var(--muted)">PDF · متاح للتحميل</span></div><span style="color:var(--royal)">⬇️</span></div>`).join(''),
-    tests:()=>Array.from({length:c.tests},(_,i)=>`<div class="lesson glass" onclick="location.hash='#/quiz:${c.id}'">
-      <span class="num">${ICONS.test}</span><div class="txt"><b>اختبار الوحدة ${i+1}</b><span>${3+i} أسئلة · تصحيح فوري</span></div><span class="btn btn-primary btn-sm">ابدأ</span></div>`).join(''),
-  };
-  const render=t=>$('#tabContent').innerHTML=tabContent[t]();
-  render('lessons');
-  $('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;
-    document.querySelectorAll('#tabs .tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.t);});
+/* ---------- الإدارة: الطلبات ---------- */
+const STATUS = {new:["status-new","جديد"], ok:["status-ok","مؤكَّد"], no:["status-no","ملغى"]};
+function renderOrders(){
+  const body = document.getElementById("ordersBody");
+  const empty = document.getElementById("ordersEmpty");
+  empty.style.display = DATA.orders.length ? "none" : "";
+  body.innerHTML = DATA.orders.map(o=>`
+    <tr>
+      <td>${esc(o.name)}</td>
+      <td dir="ltr" style="text-align:end">${esc(o.phone)}</td>
+      <td>${esc(o.wilaya)}</td>
+      <td>${esc(o.course)}</td>
+      <td>${esc(o.date)}</td>
+      <td><span class="status-pill ${STATUS[o.status][0]}">${STATUS[o.status][1]}</span></td>
+      <td><div class="row-actions">
+        <button class="icon-btn" title="تأكيد" onclick="setOrderStatus(${o.id},'ok')">✓</button>
+        <button class="icon-btn" title="إلغاء" onclick="setOrderStatus(${o.id},'no')">✕</button>
+        <button class="icon-btn del" title="حذف" onclick="deleteOrder(${o.id})">🗑</button>
+      </div></td>
+    </tr>`).join("");
+}
+function setOrderStatus(id, st){
+  const o = DATA.orders.find(x=>x.id===id); if(!o) return;
+  o.status = st; saveData(); renderAdmin();
+  toast(st==="ok" ? "تم تأكيد الطلب ✓" : "تم إلغاء الطلب");
+}
+function deleteOrder(id){
+  DATA.orders = DATA.orders.filter(x=>x.id!==id);
+  saveData(); renderAdmin(); toast("تم حذف الطلب");
 }
 
-function viewQuiz(id){
-  const c=id?course(id):null;
-  const questions=db.quiz;
-  let cur=0,answers=[],locked=false;
-  app.innerHTML=`<div class="view"><section class="section"><div class="container">
-    <div class="section-head" style="margin-bottom:24px"><span class="eyebrow">اختبار إلكتروني</span><h2>${c?esc(c.title):'اختبار تقييمي'}</h2></div>
-    <div id="quizBox"></div>
-  </div></section></div>`;
-  function renderQ(){
-    const q=questions[cur];
-    $('#quizBox').innerHTML=`<div class="quiz-card glass">
-      <div class="progress-wrap"><div class="lbl"><span>السؤال ${cur+1} من ${questions.length}</span><span>${Math.round((cur)/questions.length*100)}%</span></div><div class="bar"><i style="width:${(cur)/questions.length*100}%"></i></div></div>
-      <div class="q-text">${esc(q.q)}</div>
-      <div id="opts">${q.opts.map((o,i)=>`<div class="opt" data-i="${i}"><span class="mk">${'ABCD'[i]}</span>${esc(o)}</div>`).join('')}</div>
-      <div class="quiz-foot"><span style="color:var(--muted);font-weight:700">اختر إجابة واحدة</span><button class="btn btn-primary" id="nextBtn" disabled>${cur===questions.length-1?'إنهاء الاختبار':'التالي ←'}</button></div>
-    </div>`;
-    let sel=null;
-    $('#opts').addEventListener('click',e=>{const o=e.target.closest('.opt');if(!o||locked)return;
-      document.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));o.classList.add('sel');sel=+o.dataset.i;$('#nextBtn').disabled=false;});
-    $('#nextBtn').addEventListener('click',()=>{
-      answers[cur]=sel;
-      // reveal
-      document.querySelectorAll('.opt').forEach((x,i)=>{if(i===q.correct)x.classList.add('correct');else if(i===sel)x.classList.add('wrong');});
-      locked=true;$('#nextBtn').disabled=true;
-      setTimeout(()=>{locked=false;if(cur<questions.length-1){cur++;renderQ();}else showScore();},900);
-    });
+/* ---------- الإدارة: الدورات ---------- */
+let editCourseId = null;
+function fillCourseLangSelect(){
+  document.getElementById("cLang").innerHTML = DATA.langs.map(l=>`<option>${esc(l.name)}</option>`).join("");
+}
+function renderCoursesAdmin(){
+  fillCourseLangSelect();
+  document.getElementById("coursesBody").innerHTML = DATA.courses.map(c=>`
+    <tr>
+      <td><img class="mini-img" src="${esc(c.img)}" alt=""></td>
+      <td>${esc(c.title)}</td>
+      <td>${esc(c.lang)}</td>
+      <td>${esc(c.level)}</td>
+      <td>${esc(c.duration)}</td>
+      <td>${fmtPrice(c.price)} دج</td>
+      <td><div class="row-actions">
+        <button class="icon-btn" title="تعديل" onclick="editCourse(${c.id})">✎</button>
+        <button class="icon-btn del" title="حذف" onclick="deleteCourse(${c.id})">🗑</button>
+      </div></td>
+    </tr>`).join("");
+}
+function saveCourse(){
+  const title = document.getElementById("cTitle").value.trim();
+  const lang = document.getElementById("cLang").value;
+  const level = document.getElementById("cLevel").value;
+  const duration = document.getElementById("cDuration").value.trim();
+  const price = Number(document.getElementById("cPrice").value);
+  const img = document.getElementById("cImg").value.trim();
+  if(!title || !duration || !price || !img){ toast("يرجى ملء جميع الحقول"); return; }
+  if(editCourseId){
+    Object.assign(DATA.courses.find(c=>c.id===editCourseId), {title,lang,level,duration,price,img});
+    toast("تم تحديث الدورة ✓");
+  }else{
+    DATA.courses.push({id:uid(DATA.courses), title, lang, level, duration, price, img});
+    toast("تمت إضافة الدورة ✓");
   }
-  function showScore(){
-    const correct=answers.filter((a,i)=>a===questions[i].correct).length;
-    const pct=Math.round(correct/questions.length*100);
-    const pass=pct>=50;
-    $('#quizBox').innerHTML=`<div class="quiz-card glass" style="text-align:center">
-      <div class="score-ring">${ring(pct)}</div>
-      <h2 style="font-size:1.6rem">${pass?'أحسنت! 🎉':'حاول مرة أخرى 💪'}</h2>
-      <p style="color:var(--muted);margin:8px 0 22px">أجبت بشكل صحيح على ${correct} من ${questions.length} أسئلة</p>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="viewQuiz('${id||''}')">إعادة الاختبار</button>
-        <a href="#/dashboard" class="btn btn-ghost">لوحتي الشخصية</a>
-      </div>
-    </div>`;
-    if(pass)toast('🏆 تم تسجيل نتيجتك: '+pct+'%');
+  resetCourseForm(); saveData(); renderAdmin(); renderSite();
+}
+function editCourse(id){
+  const c = DATA.courses.find(x=>x.id===id); if(!c) return;
+  editCourseId = id;
+  document.getElementById("cTitle").value = c.title;
+  document.getElementById("cLang").value = c.lang;
+  document.getElementById("cLevel").value = c.level;
+  document.getElementById("cDuration").value = c.duration;
+  document.getElementById("cPrice").value = c.price;
+  document.getElementById("cImg").value = c.img;
+  document.getElementById("courseFormTitle").textContent = "✎ تعديل الدورة";
+  document.getElementById("courseSaveBtn").textContent = "حفظ التعديلات";
+  document.getElementById("courseCancelBtn").style.display = "";
+}
+function resetCourseForm(){
+  editCourseId = null;
+  ["cTitle","cDuration","cPrice","cImg"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("courseFormTitle").textContent = "＋ إضافة دورة جديدة";
+  document.getElementById("courseSaveBtn").textContent = "حفظ الدورة";
+  document.getElementById("courseCancelBtn").style.display = "none";
+}
+function deleteCourse(id){
+  DATA.courses = DATA.courses.filter(x=>x.id!==id);
+  saveData(); renderAdmin(); renderSite(); toast("تم حذف الدورة");
+}
+
+/* ---------- الإدارة: اللغات ---------- */
+let editLangId = null;
+function renderLangsAdmin(){
+  document.getElementById("langsBody").innerHTML = DATA.langs.map(l=>`
+    <tr>
+      <td><img class="mini-img" src="${esc(l.img)}" alt=""></td>
+      <td style="font-size:1.2rem">${esc(l.flag)}</td>
+      <td>${esc(l.name)}</td>
+      <td>${esc(l.desc)}</td>
+      <td><div class="row-actions">
+        <button class="icon-btn" title="تعديل" onclick="editLang(${l.id})">✎</button>
+        <button class="icon-btn del" title="حذف" onclick="deleteLang(${l.id})">🗑</button>
+      </div></td>
+    </tr>`).join("");
+}
+function saveLang(){
+  const name = document.getElementById("lName").value.trim();
+  const flag = document.getElementById("lFlag").value.trim() || "🌐";
+  const desc = document.getElementById("lDesc").value.trim();
+  const img = document.getElementById("lImg").value.trim();
+  if(!name || !desc || !img){ toast("يرجى ملء جميع الحقول"); return; }
+  if(editLangId){
+    Object.assign(DATA.langs.find(l=>l.id===editLangId), {name,flag,desc,img});
+    toast("تم تحديث اللغة ✓");
+  }else{
+    DATA.langs.push({id:uid(DATA.langs), name, flag, desc, img});
+    toast("تمت إضافة اللغة ✓");
   }
-  renderQ();
+  resetLangForm(); saveData(); renderAdmin(); renderSite();
 }
-function ring(pct){
-  const r=60,c=2*Math.PI*r,off=c-(pct/100)*c;
-  return `<svg viewBox="0 0 150 150" width="150" height="150">
-    <circle cx="75" cy="75" r="${r}" fill="none" stroke="var(--bg2)" stroke-width="12"/>
-    <circle cx="75" cy="75" r="${r}" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round"
-      stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 75 75)"/>
-    <defs><linearGradient id="g"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#4C1D95"/></linearGradient></defs>
-    <text x="75" y="70" text-anchor="middle" font-size="30" font-weight="900" fill="var(--ink)" font-family="Cairo">${pct}%</text>
-    <text x="75" y="95" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="Tajawal">النتيجة</text>
-  </svg>`;
+function editLang(id){
+  const l = DATA.langs.find(x=>x.id===id); if(!l) return;
+  editLangId = id;
+  document.getElementById("lName").value = l.name;
+  document.getElementById("lFlag").value = l.flag;
+  document.getElementById("lDesc").value = l.desc;
+  document.getElementById("lImg").value = l.img;
+  document.getElementById("langFormTitle").textContent = "✎ تعديل اللغة";
+  document.getElementById("langSaveBtn").textContent = "حفظ التعديلات";
+  document.getElementById("langCancelBtn").style.display = "";
 }
-
-function viewTests(){
-  app.innerHTML=`<div class="view"><section class="section"><div class="container">
-    <div class="section-head"><span class="eyebrow">التقييم الذاتي</span><h2>الاختبارات الإلكترونية</h2><p>قيّم مستواك في كل مادة مع تصحيح فوري وتحليل للنتائج</p></div>
-    <div class="tests-grid">
-      ${db.courses.map(c=>`<div class="test-item glass" onclick="location.hash='#/quiz:${c.id}'">
-        <div class="ic">${c.emoji}</div>
-        <span class="card-subject">${esc(c.subject)}</span>
-        <h3 style="font-size:1.1rem;margin:4px 0 10px">اختبار ${esc(c.title)}</h3>
-        <div class="card-meta"><span>${ICONS.test} ${c.tests} أسئلة</span><span>⏱️ ${c.tests*3} دقيقة</span></div>
-        <button class="btn btn-primary btn-sm" style="margin-top:14px;width:100%;justify-content:center">ابدأ الاختبار ←</button>
-      </div>`).join('')}
-    </div>
-  </div></section></div>`;
+function resetLangForm(){
+  editLangId = null;
+  ["lName","lFlag","lDesc","lImg"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("langFormTitle").textContent = "＋ إضافة لغة جديدة";
+  document.getElementById("langSaveBtn").textContent = "حفظ اللغة";
+  document.getElementById("langCancelBtn").style.display = "none";
+}
+function deleteLang(id){
+  DATA.langs = DATA.langs.filter(x=>x.id!==id);
+  if(!DATA.langs.some(l=>l.name===activeFilter)) activeFilter = "الكل";
+  saveData(); renderAdmin(); renderSite(); toast("تم حذف اللغة");
 }
 
-function viewTeachers(){
-  app.innerHTML=`<div class="view"><section class="section"><div class="container">
-    <div class="section-head"><span class="eyebrow">فريق التدريس</span><h2>أساتذة بخبرة عالية</h2><p>تعلّم على يد نخبة من أفضل الأساتذة المتخصصين</p></div>
-    <div class="teachers-grid">
-      ${db.teachers.map(t=>{const n=db.courses.filter(c=>c.teacherId===t.id).length;
-        return `<div class="tcard glass" onclick="teacherModal('${t.id}')">
-          <div class="av">${t.initials}</div><h4>${esc(t.name)}</h4><div class="subj">${esc(t.subject)}</div>
-          <div class="cnt">${n} دورة · ⭐ 4.8</div></div>`}).join('')}
-    </div>
-  </div></section></div>`;
+/* ---------- الإدارة: المدرسون ---------- */
+let editTeacherId = null;
+function renderTeachersAdmin(){
+  document.getElementById("teachersBody").innerHTML = DATA.teachers.map(t=>`
+    <tr>
+      <td><img class="mini-img" style="width:36px;border-radius:50%" src="${esc(t.img)}" alt=""></td>
+      <td>${esc(t.name)}</td>
+      <td>${esc(t.lang)}</td>
+      <td>${esc(t.bio)}</td>
+      <td><div class="row-actions">
+        <button class="icon-btn" title="تعديل" onclick="editTeacher(${t.id})">✎</button>
+        <button class="icon-btn del" title="حذف" onclick="deleteTeacher(${t.id})">🗑</button>
+      </div></td>
+    </tr>`).join("");
 }
-function teacherModal(id){const t=teacher(id);const cs=db.courses.filter(c=>c.teacherId===id);
-  openModal(`<div style="text-align:center;margin-bottom:16px"><div class="av" style="width:80px;height:80px;border-radius:50%;margin:0 auto 12px;background:var(--grad);display:grid;place-items:center;color:#fff;font-family:Cairo;font-size:1.8rem;font-weight:900">${t.initials}</div>
-    <h3>${esc(t.name)}</h3><div class="card-subject">${esc(t.subject)}</div></div>
-    <p style="color:var(--muted);text-align:center;margin-bottom:18px">${esc(t.bio)}</p>
-    <b style="font-family:Cairo;display:block;margin-bottom:10px">الدورات (${cs.length})</b>
-    ${cs.map(c=>`<div class="file-row" style="border:1px solid var(--line);margin-bottom:8px;cursor:pointer" onclick="closeModal();location.hash='#/course:${c.id}'"><span class="fic">${c.emoji}</span><b style="flex:1;font-family:Cairo">${esc(c.title)}</b>→</div>`).join('')||'<p style="color:var(--muted)">لا توجد دورات بعد</p>'}`);
-}
-
-function viewLevels(){
-  app.innerHTML=`<div class="view"><section class="section"><div class="container">
-    <div class="section-head"><span class="eyebrow">حسب مستواك</span><h2>المستويات الدراسية</h2><p>اختر مستواك الدراسي للوصول إلى الدورات المناسبة</p></div>
-    <div class="tiles">
-      ${db.levels.map(l=>{const n=db.courses.filter(c=>c.levelId===l.id).length;
-        return `<div class="tile glass" onclick="levelModal('${l.id}')"><div class="ic">${l.icon}</div><h4>${esc(l.name)}</h4><p>${n} دورة متاحة</p></div>`}).join('')}
-    </div>
-  </div></section></div>`;
-}
-function levelModal(id){const l=level(id);const cs=db.courses.filter(c=>c.levelId===id);
-  openModal(`<h3>${l.icon} ${esc(l.name)}</h3><p class="sub">${cs.length} دورة متاحة في هذا المستوى</p>
-    ${cs.map(c=>`<div class="file-row" style="border:1px solid var(--line);margin-bottom:8px;cursor:pointer" onclick="closeModal();location.hash='#/course:${c.id}'"><span class="fic">${c.emoji}</span><div style="flex:1"><b style="font-family:Cairo">${esc(c.title)}</b><br><span style="font-size:.8rem;color:var(--muted)">${esc(c.subject)}</span></div>→</div>`).join('')||'<p style="color:var(--muted)">لا توجد دورات بعد</p>'}`);
-}
-
-function viewSubs(){
-  app.innerHTML=`<div class="view"><section class="section"><div class="container">
-    <div class="section-head"><span class="eyebrow">الاشتراكات</span><h2>اختر الخطة المناسبة لك</h2><p>مرونة كاملة — يمكنك الترقية أو الإلغاء في أي وقت</p></div>
-    <div class="plans">
-      ${db.plans.map(p=>`<div class="plan glass ${p.pop?'pop':''}">
-        ${p.pop?'<span class="tag">الأكثر اختيارًا</span>':''}
-        <h3>${esc(p.name)}</h3>
-        <div class="price">${p.price===0?'مجاني':p.price.toLocaleString('en-US')}${p.price?'<small> دج / شهر</small>':''}</div>
-        <ul>${p.features.map(f=>`<li>${ICONS.check} ${esc(f)}</li>`).join('')}</ul>
-        <button class="btn ${p.pop?'btn-gold':'btn-primary'}" onclick="subscribe('${esc(p.name)}')">${p.price===0?'ابدأ مجانًا':'اشترك الآن'}</button>
-      </div>`).join('')}
-    </div>
-  </div></section></div>`;
-}
-function subscribe(name){openLogin('اشترك في خطة '+name);}
-
-function viewDashboard(){
-  const st=db.auth.student;
-  const enrolled=db.courses.filter(c=>c.progress>0);
-  const done=db.courses.filter(c=>c.progress>=100).length;
-  const avg=Math.round(db.results.reduce((a,b)=>a+b,0)/db.results.length);
-  app.innerHTML=`<div class="view"><section class="section"><div class="container">
-    <div class="admin-head"><div><span class="eyebrow">لوحتي الشخصية</span><h2>مرحبًا${st?'، '+esc(st):' بك'} 👋</h2></div>
-    ${st?`<button class="btn btn-ghost btn-sm" onclick="logout()">تسجيل الخروج</button>`:`<button class="btn btn-primary btn-sm" onclick="openLogin()">سجّل الدخول</button>`}</div>
-    <div class="dash-grid">
-      ${kpi('📚',enrolled.length,'دورة مسجّلة','var(--grad)')}
-      ${kpi('✅',done,'دورة مكتملة','linear-gradient(135deg,#34d399,#059669)')}
-      ${kpi('📊',avg+'%','متوسط النتائج','linear-gradient(135deg,#F0A6CA,#8B5CF6)')}
-      ${kpi('🏆',db.results.filter(r=>r>=50).length,'شهادة','linear-gradient(135deg,#F2CC7B,#E6B450)')}
-    </div>
-    <div class="dash-cols">
-      <div style="display:flex;flex-direction:column;gap:22px">
-        <div class="panel glass"><h3>📈 تطوّر نتائجك</h3>
-          <div class="chart">${db.results.map((r,i)=>`<div class="col"><i style="height:${r}%"></i><span>ت${i+1}</span></div>`).join('')}</div></div>
-        <div class="panel glass"><h3>📚 دوراتي الحالية</h3>
-          ${enrolled.length?enrolled.map(c=>`<div class="lesson" style="border:1px solid var(--line);margin-bottom:10px;cursor:pointer" onclick="location.hash='#/course:${c.id}'">
-            <span class="num">${c.emoji}</span><div class="txt" style="flex:1"><b>${esc(c.title)}</b>
-            <div class="bar" style="margin-top:6px"><i style="width:${c.progress}%"></i></div></div><span class="dur">${c.progress}%</span></div>`).join(''):'<div class="empty"><div class="ic">📭</div>لم تسجّل في أي دورة بعد<br><a href="#/courses" class="btn btn-primary btn-sm" style="margin-top:12px">تصفّح الدورات</a></div>'}
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:22px">
-        <div class="panel glass"><h3>🏅 شهاداتي</h3>
-          ${done?db.courses.filter(c=>c.progress>=100).map(c=>`<div class="cert"><span class="medal">🏅</span><div><b style="font-family:Cairo">${esc(c.title)}</b><br><span style="font-size:.8rem;color:var(--muted)">شهادة إتمام</span></div></div>`).join(''):'<div class="cert"><span class="medal">🎯</span><div><b style="font-family:Cairo">أكمل دورة</b><br><span style="font-size:.8rem;color:var(--muted)">للحصول على أول شهادة</span></div></div>'}
-        </div>
-        <div class="panel glass"><h3>🔔 الإشعارات</h3>
-          ${db.notifications.map(n=>`<div class="noti"><span class="d"></span><div><b>${esc(n.title)}</b><br><span>${esc(n.body)} · ${n.time}</span></div></div>`).join('')}
-        </div>
-      </div>
-    </div>
-  </div></section></div>`;
-}
-const kpi=(ic,val,lbl,bg)=>`<div class="kpi glass"><div class="ic" style="background:${bg}">${ic}</div><b>${val}</b><span>${lbl}</span></div>`;
-
-function viewContact(){
-  app.innerHTML=`<div class="view"><section class="section"><div class="container">
-    <div class="section-head"><span class="eyebrow">تواصل معنا</span><h2>نحن هنا لمساعدتك</h2><p>أرسل استفسارك وسنرد عليك في أقرب وقت</p></div>
-    <div class="contact-grid">
-      <div class="panel glass">
-        <div class="field"><label>الاسم الكامل</label><input id="cName" placeholder="اسمك"></div>
-        <div class="field"><label>البريد الإلكتروني</label><input id="cEmail" type="email" placeholder="you@mail.com"></div>
-        <div class="field"><label>الموضوع</label><select id="cSubj"><option>استفسار عام</option><option>مشكلة تقنية</option><option>الاشتراكات</option><option>اقتراح</option></select></div>
-        <div class="field"><label>رسالتك</label><textarea id="cMsg" placeholder="اكتب رسالتك هنا…"></textarea></div>
-        <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="sendMsg()">إرسال الرسالة ←</button>
-      </div>
-      <div class="panel glass">
-        <h3>معلومات التواصل</h3>
-        <div class="info-item"><span class="ic">📧</span><div><b style="font-family:Cairo">البريد</b><br><span style="color:var(--muted)">contact@talinespace.dz</span></div></div>
-        <div class="info-item"><span class="ic">📱</span><div><b style="font-family:Cairo">الهاتف</b><br><span style="color:var(--muted)">0555 12 34 56</span></div></div>
-        <div class="info-item"><span class="ic">📍</span><div><b style="font-family:Cairo">العنوان</b><br><span style="color:var(--muted)">الجزائر العاصمة، الجزائر</span></div></div>
-        <div class="info-item" style="border:none"><span class="ic">🕐</span><div><b style="font-family:Cairo">أوقات العمل</b><br><span style="color:var(--muted)">السبت - الخميس · 9:00 - 18:00</span></div></div>
-        <div style="margin-top:16px;display:flex;gap:10px">
-          <button class="icon-btn" onclick="toast('فيسبوك')">f</button>
-          <button class="icon-btn" onclick="toast('إنستغرام')">📷</button>
-          <button class="icon-btn" onclick="toast('يوتيوب')">▶</button>
-        </div>
-      </div>
-    </div>
-  </div></section></div>`;
-}
-function sendMsg(){
-  const name=$('#cName').value.trim(),email=$('#cEmail').value.trim(),text=$('#cMsg').value.trim();
-  if(!name||!email||!text){toast('⚠️ يرجى ملء كل الحقول');return;}
-  db.messages.unshift({id:uid(),name,email,text,date:new Date().toISOString().slice(0,10),read:false});save();
-  toast('✓ تم إرسال رسالتك بنجاح');
-  $('#cName').value='';$('#cEmail').value='';$('#cMsg').value='';
-}
-
-/* ================= ADMIN ================= */
-let adminAuthed=false,adminTab='dashboard';
-function viewAdmin(){
-  if(!adminAuthed){adminGate();return;}
-  app.innerHTML=`<div class="view"><div class="admin">
-    <aside class="admin-side glass" id="adminSide">
-      <div class="logo"><span class="mark" style="width:32px;height:32px;font-size:1rem">T</span> لوحة التحكم</div>
-      <nav class="admin-nav" id="adminNav">
-        ${[['dashboard','📊 الإحصائيات'],['students','👥 الطلاب'],['teachers','👨‍🏫 الأساتذة'],['courses','📚 الدورات'],['tests','📝 الاختبارات'],['subs','💳 الاشتراكات'],['messages','✉️ الرسائل'],['settings','⚙️ الإعدادات']]
-          .map(([k,l])=>`<a data-tab="${k}" class="${adminTab===k?'active':''}">${l}</a>`).join('')}
-      </nav>
-      <button class="btn btn-ghost btn-sm" style="width:100%;margin-top:16px;justify-content:center" onclick="location.hash='#/'">← العودة للموقع</button>
-    </aside>
-    <div class="admin-main">
-      <div class="admin-head">
-        <button class="icon-btn" onclick="$('#adminSide').classList.toggle('open')" style="display:none" id="adminBurger">☰</button>
-        <div id="adminTitle"></div>
-        <div style="display:flex;gap:8px"><button class="btn btn-ghost btn-sm" onclick="reseed()">↺ إعادة تعيين</button></div>
-      </div>
-      <div id="adminBody"></div>
-    </div>
-  </div></div>`;
-  if(window.innerWidth<=820)$('#adminBurger').style.display='grid';
-  $('#adminNav').addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;adminTab=a.dataset.tab;
-    document.querySelectorAll('#adminNav a').forEach(x=>x.classList.remove('active'));a.classList.add('active');$('#adminSide').classList.remove('open');renderAdminTab();});
-  renderAdminTab();
-}
-function adminGate(){
-  app.innerHTML=`<div class="view"><section class="section"><div class="container" style="max-width:420px">
-    <div class="panel glass" style="text-align:center">
-      <div style="font-size:3rem;margin-bottom:10px">🔐</div>
-      <h2 style="margin-bottom:6px">لوحة تحكم المسؤول</h2>
-      <p class="sub" style="color:var(--muted);margin-bottom:20px">أدخل كلمة المرور للمتابعة</p>
-      <div class="field"><input type="password" id="adminPass" placeholder="كلمة المرور" onkeydown="if(event.key==='Enter')tryAdmin()"></div>
-      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="tryAdmin()">دخول</button>
-      <p style="color:var(--muted);font-size:.8rem;margin-top:14px">💡 كلمة المرور الافتراضية: <b>${esc(db.settings.adminPass)}</b></p>
-    </div>
-  </div></section></div>`;
-  setTimeout(()=>$('#adminPass')&&$('#adminPass').focus(),100);
-}
-function tryAdmin(){
-  if($('#adminPass').value===db.settings.adminPass){adminAuthed=true;toast('✓ مرحبًا بك في لوحة التحكم');viewAdmin();}
-  else toast('⚠️ كلمة المرور غير صحيحة');
-}
-
-function renderAdminTab(){
-  const titles={dashboard:'نظرة عامة',students:'إدارة الطلاب',teachers:'إدارة الأساتذة',courses:'إدارة الدورات',tests:'إدارة الاختبارات',subs:'الاشتراكات',messages:'الرسائل',settings:'الإعدادات'};
-  $('#adminTitle').innerHTML=`<h2>${titles[adminTab]}</h2>`;
-  const body=$('#adminBody');
-  if(adminTab==='dashboard'){
-    body.innerHTML=`
-      <div class="stat-row">
-        ${kpi('👥',db.students.length,'إجمالي الطلاب','var(--grad)')}
-        ${kpi('📚',db.courses.length,'دورة نشطة','linear-gradient(135deg,#F0A6CA,#8B5CF6)')}
-        ${kpi('👨‍🏫',db.teachers.length,'أستاذ','linear-gradient(135deg,#34d399,#059669)')}
-        ${kpi('💰',money(db.students.filter(s=>s.status==='ok').length*1500),'إيراد شهري','linear-gradient(135deg,#F2CC7B,#E6B450)')}
-      </div>
-      <div class="dash-cols">
-        <div class="panel glass"><h3>📈 التسجيلات حسب المادة</h3>
-          <div class="chart">${[...new Set(db.courses.map(c=>c.subject))].map(s=>{const n=db.courses.filter(c=>c.subject===s).length;
-            return `<div class="col"><i style="height:${n/db.courses.length*100+30}%"></i><span>${esc(s.slice(0,6))}</span></div>`}).join('')}</div></div>
-        <div class="panel glass"><h3>✉️ آخر الرسائل</h3>
-          ${db.messages.slice(0,4).map(m=>`<div class="noti"><span class="d" style="background:${m.read?'var(--muted)':'var(--pink)'}"></span><div><b>${esc(m.name)}</b><br><span>${esc(m.text.slice(0,40))}…</span></div></div>`).join('')||'<p style="color:var(--muted)">لا رسائل</p>'}
-        </div>
-      </div>`;
+function saveTeacher(){
+  const name = document.getElementById("tName").value.trim();
+  const lang = document.getElementById("tLang").value.trim();
+  const bio = document.getElementById("tBio").value.trim();
+  const img = document.getElementById("tImg").value.trim();
+  if(!name || !lang || !bio || !img){ toast("يرجى ملء جميع الحقول"); return; }
+  if(editTeacherId){
+    Object.assign(DATA.teachers.find(t=>t.id===editTeacherId), {name,lang,bio,img});
+    toast("تم تحديث المدرّس ✓");
+  }else{
+    DATA.teachers.push({id:uid(DATA.teachers), name, lang, bio, img});
+    toast("تمت إضافة المدرّس ✓");
   }
-  else if(adminTab==='students'){
-    body.innerHTML=adminTable(
-      ['الاسم','البريد','الخطة','الحالة','تاريخ الانضمام','إجراءات'],
-      db.students.map(s=>[esc(s.name),esc(s.email),esc(s.plan),statusBadge(s.status),s.joined,rowActions('student',s.id)]),
-      'student'
-    );
-  }
-  else if(adminTab==='teachers'){
-    body.innerHTML=adminTable(
-      ['الأستاذ','المادة','عدد الدورات','إجراءات'],
-      db.teachers.map(t=>[`<div style="display:flex;align-items:center;gap:8px"><span class="av" style="width:30px;height:30px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:.7rem;font-weight:800">${t.initials}</span>${esc(t.name)}</div>`,esc(t.subject),db.courses.filter(c=>c.teacherId===t.id).length,rowActions('teacher',t.id)]),
-      'teacher'
-    );
-  }
-  else if(adminTab==='courses'){
-    body.innerHTML=adminTable(
-      ['الدورة','المادة','المستوى','الأستاذ','السعر','إجراءات'],
-      db.courses.map(c=>[`${c.emoji} ${esc(c.title)}`,esc(c.subject),level(c.levelId).name,teacher(c.teacherId).name,money(c.price),rowActions('course',c.id)]),
-      'course'
-    );
-  }
-  else if(adminTab==='tests'){
-    body.innerHTML=`<div class="panel glass"><h3>📝 بنك الأسئلة (${db.quiz.length})</h3>
-      ${db.quiz.map((q,i)=>`<div class="lesson" style="border:1px solid var(--line);margin-bottom:10px">
-        <span class="num">${i+1}</span><div class="txt" style="flex:1"><b>${esc(q.q)}</b><span>الإجابة الصحيحة: ${esc(q.opts[q.correct])}</span></div>
-        <div class="row-act"><button class="del" onclick="db.quiz.splice(${i},1);save();renderAdminTab();toast('تم الحذف')">${ICONS.trash}</button></div></div>`).join('')}
-      <button class="btn btn-primary btn-sm" style="margin-top:12px" onclick="addQuestion()">＋ سؤال جديد</button></div>`;
-  }
-  else if(adminTab==='subs'){
-    body.innerHTML=`<div class="stat-row">
-      ${db.plans.map(p=>{const n=db.students.filter(s=>s.plan===p.name).length;return kpi('💳',n,'مشترك في '+p.name,'var(--grad)')}).join('')}
-    </div>${adminTable(
-      ['الطالب','الخطة الحالية','الحالة','إجراءات'],
-      db.students.map(s=>[esc(s.name),esc(s.plan),statusBadge(s.status),`<div class="row-act"><button onclick="cycleStatus('${s.id}')" title="تغيير الحالة">↻</button></div>`]),
-      null
-    )}`;
-  }
-  else if(adminTab==='messages'){
-    body.innerHTML=db.messages.length?adminTable(
-      ['المرسل','البريد','الرسالة','التاريخ','إجراءات'],
-      db.messages.map(m=>[`${m.read?'':'🔵 '}${esc(m.name)}`,esc(m.email),esc(m.text.slice(0,50)),m.date,`<div class="row-act"><button onclick="markRead('${m.id}')" title="تحديد كمقروء">${ICONS.check}</button><button class="del" onclick="delItem('messages','${m.id}')">${ICONS.trash}</button></div>`]),
-      null
-    ):`<div class="empty glass" style="padding:50px"><div class="ic">📭</div>لا توجد رسائل</div>`;
-  }
-  else if(adminTab==='settings'){
-    body.innerHTML=`<div class="panel glass" style="max-width:560px">
-      <div class="field"><label>اسم المنصة</label><input id="setName" value="${esc(db.settings.platformName)}"></div>
-      <div class="field"><label>كلمة مرور المسؤول</label><input id="setPass" value="${esc(db.settings.adminPass)}"></div>
-      <div class="field"><label>الوضع الافتراضي</label><select id="setTheme"><option value="light" ${!db.settings.darkDefault?'selected':''}>فاتح</option><option value="dark" ${db.settings.darkDefault?'selected':''}>ليلي</option></select></div>
-      <button class="btn btn-primary" onclick="saveSettings()">حفظ الإعدادات</button>
-      <hr style="border:none;border-top:1px solid var(--line);margin:22px 0">
-      <button class="btn btn-ghost btn-sm" onclick="reseed()">↺ استعادة البيانات الافتراضية</button>
-    </div>`;
-  }
+  resetTeacherForm(); saveData(); renderAdmin(); renderSite();
 }
-function openAdd(kind){({student:editStudent,teacher:editTeacher,course:editCourse}[kind])();}
-function adminTable(heads,rows,addKey){
-  return `${addKey?`<div style="margin-bottom:16px"><button class="btn btn-primary btn-sm" onclick="openAdd('${addKey}')">＋ إضافة جديد</button></div>`:''}
-    <div class="table-wrap"><table><thead><tr>${heads.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
-    <tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+function editTeacher(id){
+  const t = DATA.teachers.find(x=>x.id===id); if(!t) return;
+  editTeacherId = id;
+  document.getElementById("tName").value = t.name;
+  document.getElementById("tLang").value = t.lang;
+  document.getElementById("tBio").value = t.bio;
+  document.getElementById("tImg").value = t.img;
+  document.getElementById("teacherFormTitle").textContent = "✎ تعديل المدرّس";
+  document.getElementById("teacherSaveBtn").textContent = "حفظ التعديلات";
+  document.getElementById("teacherCancelBtn").style.display = "";
 }
-const statusBadge=s=>({ok:'<span class="badge ok">نشط</span>',wait:'<span class="badge wait">قيد الانتظار</span>',no:'<span class="badge no">منتهٍ</span>'}[s]||s);
-const rowActions=(type,id)=>`<div class="row-act"><button onclick="edit_${type}('${id}')" title="تعديل">${ICONS.edit}</button><button class="del" onclick="del_${type}('${id}')">${ICONS.trash}</button></div>`;
-
-/* CRUD handlers */
-function delItem(coll,id){db[coll]=db[coll].filter(x=>x.id!==id);save();renderAdminTab();toast('تم الحذف');}
-window.del_student=id=>{if(confirm('حذف هذا الطالب؟')){delItem('students',id);}};
-window.del_teacher=id=>{if(confirm('حذف هذا الأستاذ؟')){delItem('teachers',id);}};
-window.del_course=id=>{if(confirm('حذف هذه الدورة؟')){delItem('courses',id);}};
-window.edit_student=id=>editStudent(db.students.find(s=>s.id===id));
-window.edit_teacher=id=>editTeacher(db.teachers.find(t=>t.id===id));
-window.edit_course=id=>editCourse(db.courses.find(c=>c.id===id));
-
-function editStudent(s){const e=s||{};
-  openModal(`<h3>${s?'تعديل':'إضافة'} طالب</h3><p class="sub">أدخل بيانات الطالب</p>
-    <div class="field"><label>الاسم</label><input id="fName" value="${e.name||''}"></div>
-    <div class="field"><label>البريد</label><input id="fEmail" value="${e.email||''}"></div>
-    <div class="field"><label>الخطة</label><select id="fPlan">${db.plans.map(p=>`<option ${e.plan===p.name?'selected':''}>${esc(p.name)}</option>`).join('')}</select></div>
-    <div class="field"><label>الحالة</label><select id="fStatus"><option value="ok" ${e.status==='ok'?'selected':''}>نشط</option><option value="wait" ${e.status==='wait'?'selected':''}>قيد الانتظار</option><option value="no" ${e.status==='no'?'selected':''}>منتهٍ</option></select></div>
-    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="saveStudent('${e.id||''}')">حفظ</button>`);
+function resetTeacherForm(){
+  editTeacherId = null;
+  ["tName","tLang","tBio","tImg"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("teacherFormTitle").textContent = "＋ إضافة مدرّس";
+  document.getElementById("teacherSaveBtn").textContent = "حفظ المدرّس";
+  document.getElementById("teacherCancelBtn").style.display = "none";
 }
-function saveStudent(id){
-  const o={name:$('#fName').value.trim(),email:$('#fEmail').value.trim(),plan:$('#fPlan').value,status:$('#fStatus').value};
-  if(!o.name){toast('⚠️ الاسم مطلوب');return;}
-  if(id){Object.assign(db.students.find(s=>s.id===id),o);}else{db.students.push({id:uid(),joined:new Date().toISOString().slice(0,10),...o});}
-  save();closeModal();renderAdminTab();toast('✓ تم الحفظ');
-}
-function editTeacher(t){const e=t||{};
-  openModal(`<h3>${t?'تعديل':'إضافة'} أستاذ</h3><p class="sub">أدخل بيانات الأستاذ</p>
-    <div class="field"><label>الاسم</label><input id="fName" value="${e.name||''}"></div>
-    <div class="field"><label>المادة</label><input id="fSubj" value="${e.subject||''}"></div>
-    <div class="field"><label>نبذة</label><textarea id="fBio">${e.bio||''}</textarea></div>
-    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="saveTeacher('${e.id||''}')">حفظ</button>`);
-}
-function saveTeacher(id){
-  const name=$('#fName').value.trim();if(!name){toast('⚠️ الاسم مطلوب');return;}
-  const o={name,subject:$('#fSubj').value.trim(),bio:$('#fBio').value.trim(),initials:name.replace(/^أ\.?\s*/,'').trim()[0]||'؟'};
-  if(id){Object.assign(db.teachers.find(t=>t.id===id),o);}else{db.teachers.push({id:uid(),...o});}
-  save();closeModal();renderAdminTab();toast('✓ تم الحفظ');
-}
-function editCourse(c){const e=c||{};
-  openModal(`<h3>${c?'تعديل':'إضافة'} دورة</h3><p class="sub">أدخل تفاصيل الدورة</p>
-    <div class="field"><label>العنوان</label><input id="fTitle" value="${e.title||''}"></div>
-    <div class="field"><label>المادة</label><input id="fSubj" value="${e.subject||''}"></div>
-    <div class="field"><label>المستوى</label><select id="fLevel">${db.levels.map(l=>`<option value="${l.id}" ${e.levelId===l.id?'selected':''}>${esc(l.name)}</option>`).join('')}</select></div>
-    <div class="field"><label>الأستاذ</label><select id="fTeacher">${db.teachers.map(t=>`<option value="${t.id}" ${e.teacherId===t.id?'selected':''}>${esc(t.name)}</option>`).join('')}</select></div>
-    <div class="field"><label>السعر (دج)</label><input id="fPrice" type="number" value="${e.price||0}"></div>
-    <div class="field"><label>رمز تعبيري</label><input id="fEmoji" value="${e.emoji||'📚'}"></div>
-    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="saveCourse('${e.id||''}')">حفظ</button>`);
-}
-function saveCourse(id){
-  const title=$('#fTitle').value.trim();if(!title){toast('⚠️ العنوان مطلوب');return;}
-  const o={title,subject:$('#fSubj').value.trim(),levelId:$('#fLevel').value,teacherId:$('#fTeacher').value,price:+$('#fPrice').value||0,emoji:$('#fEmoji').value||'📚'};
-  if(id){Object.assign(db.courses.find(c=>c.id===id),o);}
-  else{db.courses.push({id:uid(),lessons:12,tests:4,rating:4.7,progress:0,...o});}
-  save();closeModal();renderAdminTab();toast('✓ تم الحفظ');
-}
-function addQuestion(){
-  openModal(`<h3>سؤال جديد</h3><p class="sub">أضف سؤالًا لبنك الأسئلة</p>
-    <div class="field"><label>نص السؤال</label><textarea id="qText"></textarea></div>
-    ${[0,1,2,3].map(i=>`<div class="field"><label>الخيار ${'ABCD'[i]} ${i===0?'(الصحيح افتراضيًا)':''}</label><input id="qOpt${i}"></div>`).join('')}
-    <div class="field"><label>الإجابة الصحيحة</label><select id="qCorrect"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option></select></div>
-    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="saveQuestion()">إضافة</button>`);
-}
-function saveQuestion(){
-  const q=$('#qText').value.trim();const opts=[0,1,2,3].map(i=>$('#qOpt'+i).value.trim());
-  if(!q||opts.some(o=>!o)){toast('⚠️ املأ كل الحقول');return;}
-  db.quiz.push({q,opts,correct:+$('#qCorrect').value});save();closeModal();renderAdminTab();toast('✓ تمت الإضافة');
-}
-function cycleStatus(id){const s=db.students.find(x=>x.id===id);const order=['ok','wait','no'];s.status=order[(order.indexOf(s.status)+1)%3];save();renderAdminTab();}
-function markRead(id){const m=db.messages.find(x=>x.id===id);m.read=true;save();renderAdminTab();toast('تم التحديد كمقروء');}
-function saveSettings(){
-  db.settings.platformName=$('#setName').value;db.settings.adminPass=$('#setPass').value;db.settings.darkDefault=$('#setTheme').value==='dark';
-  save();toast('✓ تم حفظ الإعدادات');
+function deleteTeacher(id){
+  DATA.teachers = DATA.teachers.filter(x=>x.id!==id);
+  saveData(); renderAdmin(); renderSite(); toast("تم حذف المدرّس");
 }
 
-/* ================= AUTH (student) ================= */
-function openLogin(msg){
-  openModal(`<h3>${db.auth.student?'حسابي':'تسجيل الدخول'}</h3><p class="sub">${msg||'ادخل إلى منصة Taline Space'}</p>
-    <div class="field"><label>الاسم</label><input id="lName" value="${db.auth.student||''}" placeholder="اسمك الكامل"></div>
-    <div class="field"><label>البريد الإلكتروني</label><input id="lEmail" type="email" placeholder="you@mail.com"></div>
-    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="doLogin()">${db.auth.student?'تحديث':'دخول'} ←</button>
-    <p style="text-align:center;color:var(--muted);font-size:.82rem;margin-top:14px">بالدخول أنت توافق على شروط الاستخدام</p>`);
+/* ---------- الإدارة: الآراء ---------- */
+let editReviewId = null;
+function renderReviewsAdmin(){
+  document.getElementById("reviewsBody").innerHTML = DATA.reviews.map(r=>`
+    <tr>
+      <td>${esc(r.name)}</td>
+      <td>${esc(r.course)}</td>
+      <td style="color:var(--gold)">${"★".repeat(r.stars)}</td>
+      <td>${esc(r.text)}</td>
+      <td><div class="row-actions">
+        <button class="icon-btn" title="تعديل" onclick="editReview(${r.id})">✎</button>
+        <button class="icon-btn del" title="حذف" onclick="deleteReview(${r.id})">🗑</button>
+      </div></td>
+    </tr>`).join("");
 }
-function doLogin(){
-  const n=$('#lName').value.trim();if(!n){toast('⚠️ أدخل اسمك');return;}
-  db.auth.student=n;save();closeModal();updateAuthUI();toast('✓ مرحبًا '+n);location.hash='#/dashboard';
+function saveReview(){
+  const name = document.getElementById("rName").value.trim();
+  const course = document.getElementById("rCourse").value.trim();
+  const stars = Math.min(5, Math.max(1, Number(document.getElementById("rStars").value)||5));
+  const text = document.getElementById("rText").value.trim();
+  if(!name || !course || !text){ toast("يرجى ملء جميع الحقول"); return; }
+  if(editReviewId){
+    Object.assign(DATA.reviews.find(r=>r.id===editReviewId), {name,course,stars,text});
+    toast("تم تحديث الرأي ✓");
+  }else{
+    DATA.reviews.push({id:uid(DATA.reviews), name, course, stars, text});
+    toast("تمت إضافة الرأي ✓");
+  }
+  resetReviewForm(); saveData(); renderAdmin(); renderSite();
 }
-function logout(){db.auth.student=null;save();updateAuthUI();toast('تم تسجيل الخروج');location.hash='#/';}
-function updateAuthUI(){
-  const b=$('#loginBtn');
-  b.innerHTML=db.auth.student?`<span class="label">${esc(db.auth.student.split(' ')[0])}</span><span aria-hidden>👤</span>`:`<span class="label">دخول الطالب</span><span aria-hidden>👤</span>`;
+function editReview(id){
+  const r = DATA.reviews.find(x=>x.id===id); if(!r) return;
+  editReviewId = id;
+  document.getElementById("rName").value = r.name;
+  document.getElementById("rCourse").value = r.course;
+  document.getElementById("rStars").value = r.stars;
+  document.getElementById("rText").value = r.text;
+  document.getElementById("reviewFormTitle").textContent = "✎ تعديل الرأي";
+  document.getElementById("reviewSaveBtn").textContent = "حفظ التعديلات";
+  document.getElementById("reviewCancelBtn").style.display = "";
+}
+function resetReviewForm(){
+  editReviewId = null;
+  ["rName","rCourse","rText"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("rStars").value = 5;
+  document.getElementById("reviewFormTitle").textContent = "＋ إضافة رأي";
+  document.getElementById("reviewSaveBtn").textContent = "حفظ الرأي";
+  document.getElementById("reviewCancelBtn").style.display = "none";
+}
+function deleteReview(id){
+  DATA.reviews = DATA.reviews.filter(x=>x.id!==id);
+  saveData(); renderAdmin(); renderSite(); toast("تم حذف الرأي");
 }
 
-/* ================= SEARCH ================= */
-function openSearch(){$('#searchPanel').classList.add('open');setTimeout(()=>$('#searchInput').focus(),100);}
-function closeSearch(){$('#searchPanel').classList.remove('open');$('#searchInput').value='';$('#searchResults').innerHTML='';}
-$('#searchBtn').addEventListener('click',()=>{$('#searchPanel').classList.contains('open')?closeSearch():openSearch();});
-$('#searchInput').addEventListener('input',e=>{
-  const q=e.target.value.trim().toLowerCase();
-  if(!q){$('#searchResults').innerHTML='';return;}
-  const res=[];
-  db.courses.forEach(c=>{if((c.title+c.subject).toLowerCase().includes(q))res.push({ic:c.emoji,t:c.title,s:'دورة · '+c.subject,go:`#/course:${c.id}`});});
-  db.teachers.forEach(t=>{if((t.name+t.subject).toLowerCase().includes(q))res.push({ic:'👨‍🏫',t:t.name,s:'أستاذ · '+t.subject,go:'#/teachers'});});
-  $('#searchResults').innerHTML=res.length?res.map(r=>`<div class="sr" onclick="location.hash='${r.go}';closeSearch()"><span class="ic">${r.ic}</span><div><b style="font-family:Cairo">${esc(r.t)}</b><br><span style="font-size:.8rem;color:var(--muted)">${esc(r.s)}</span></div></div>`).join(''):`<div class="empty" style="padding:24px">لا توجد نتائج لـ «${esc(q)}»</div>`;
+/* ---------- إحصائيات + تجميع ---------- */
+function renderAdmin(){
+  document.getElementById("stCourses").textContent = DATA.courses.length;
+  document.getElementById("stLangs").textContent = DATA.langs.length;
+  document.getElementById("stTeachers").textContent = DATA.teachers.length;
+  document.getElementById("stOrders").textContent = DATA.orders.length;
+  renderOrders(); renderCoursesAdmin(); renderLangsAdmin(); renderTeachersAdmin(); renderReviewsAdmin();
+}
+function resetData(){
+  if(!confirm("سيتم حذف جميع التعديلات والعودة للبيانات الافتراضية. متابعة؟")) return;
+  DATA = JSON.parse(JSON.stringify(seedData));
+  activeFilter = "الكل";
+  saveData(); renderAdmin(); renderSite(); toast("تمت استعادة البيانات الافتراضية ✓");
+}
+
+/* ---------- إغلاق النافذة بمفتاح Esc ---------- */
+document.addEventListener("keydown", e=>{
+  if(e.key==="Escape") closeEnroll();
 });
 
-/* notifications */
-$('#notiBtn').addEventListener('click',()=>{
-  openModal(`<h3>🔔 الإشعارات</h3><p class="sub">آخر التحديثات</p>
-    ${db.notifications.map(n=>`<div class="noti"><span class="d"></span><div><b>${esc(n.title)}</b><br><span>${esc(n.body)} · ${n.time}</span></div></div>`).join('')}
-    <button class="btn btn-ghost btn-sm" style="width:100%;margin-top:14px;justify-content:center" onclick="closeModal()">إغلاق</button>`);
-  $('#notiBtn').querySelector('.dot')?.remove();
-});
-$('#loginBtn').addEventListener('click',()=>openLogin());
-
-/* theme */
-function applyTheme(dark){
-  document.documentElement.dataset.theme=dark?'dark':'light';
-  $('#themeBtn').textContent=dark?'☀️':'🌙';
-  localStorage.setItem('taline_theme',dark?'dark':'light');
-}
-$('#themeBtn').addEventListener('click',()=>applyTheme(document.documentElement.dataset.theme!=='dark'));
-applyTheme(localStorage.getItem('taline_theme')?localStorage.getItem('taline_theme')==='dark':db.settings.darkDefault);
-
-/* burger */
-$('#burger').addEventListener('click',()=>$('#navLinks').classList.toggle('open'));
-
-function notFound(){return `<div class="view"><div class="empty" style="padding:100px 20px"><div class="ic">🔍</div><h2>الصفحة غير موجودة</h2><a href="#/" class="btn btn-primary btn-sm" style="margin-top:14px">العودة للرئيسية</a></div></div>`;}
-
-/* init */
-updateAuthUI();
-route();
+/* ---------- تشغيل ---------- */
+renderSite();
 </script>
 </body>
 </html>
